@@ -29,6 +29,9 @@ if (have_rows('section', $the_id)) :
     elseif (get_row_layout() == 'logo_carousel') :
       get_template_part('template-parts/sections/logo_carousel');
 
+    elseif (get_row_layout() == 'location') :
+      get_template_part('template-parts/sections/location');
+
     endif;
 
   // End loop.

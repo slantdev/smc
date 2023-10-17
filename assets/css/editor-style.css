@@ -209,6 +209,18 @@
             appearance: none;
     opacity: 0;
 }
+.collapse-content {
+    visibility: hidden;
+    grid-column-start: 1;
+    grid-row-start: 2;
+    min-height: 0px;
+    transition: visibility 0.2s;
+    transition: padding 0.2s ease-out,
+    background-color 0.2s ease-out;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    cursor: unset;
+}
 .collapse[open],
 .collapse-open,
 .collapse:focus:not(.collapse-close) {
@@ -782,6 +794,43 @@ details.collapse summary::-webkit-details-marker {
     outline-offset: 2px;
     outline-color: hsl(var(--bc) / 1);
 }
+.collapse-arrow > .collapse-title:after {
+    position: absolute;
+    display: block;
+    height: 0.5rem;
+    width: 0.5rem;
+    --tw-translate-y: -100%;
+    --tw-rotate: 45deg;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    transition-duration: 150ms;
+    transition-duration: 0.2s;
+    top: 50%;
+    right: 1.4rem;
+    content: "";
+    transform-origin: 75% 75%;
+    box-shadow: 2px 2px;
+    pointer-events: none;
+}
+[dir="rtl"] .collapse-arrow > .collapse-title:after {
+    --tw-rotate: -45deg;
+}
+.collapse-plus > .collapse-title:after {
+    position: absolute;
+    display: block;
+    height: 0.5rem;
+    width: 0.5rem;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    transition-duration: 300ms;
+    top: 0.9rem;
+    right: 1.4rem;
+    content: "+";
+    pointer-events: none;
+}
 .collapse:not(.collapse-open):not(.collapse-close) > input[type="checkbox"],
 .collapse:not(.collapse-open):not(.collapse-close) > input[type="radio"]:not(:checked),
 .collapse:not(.collapse-open):not(.collapse-close) > .collapse-title {
@@ -789,6 +838,9 @@ details.collapse summary::-webkit-details-marker {
 }
 .collapse:focus:not(.collapse-open):not(.collapse-close):not(.collapse[open]) > .collapse-title {
     cursor: unset;
+}
+.collapse-title {
+    position: relative;
 }
 :where(.collapse > input[type="checkbox"]),
 :where(.collapse > input[type="radio"]) {
@@ -2021,6 +2073,9 @@ details.collapse summary::-webkit-details-marker {
 .top-\[87px\] {
     top: 87px;
 }
+.left-1\/2 {
+    left: 50%;
+}
 .z-0 {
     z-index: 0;
 }
@@ -2047,6 +2102,9 @@ details.collapse summary::-webkit-details-marker {
 }
 .col-span-7 {
     grid-column: span 7 / span 7;
+}
+.float-none {
+    float: none;
 }
 .m-8 {
     margin: 2rem;
@@ -2118,6 +2176,9 @@ details.collapse summary::-webkit-details-marker {
 }
 .mb-10 {
     margin-bottom: 2.5rem;
+}
+.mt-16 {
+    margin-top: 4rem;
 }
 .line-clamp-2 {
     overflow: hidden;
@@ -2257,6 +2318,9 @@ details.collapse summary::-webkit-details-marker {
 .max-w-\[420px\] {
     max-width: 420px;
 }
+.max-w-screen-lg {
+    max-width: 1024px;
+}
 .flex-none {
     flex: none;
 }
@@ -2283,6 +2347,9 @@ details.collapse summary::-webkit-details-marker {
 }
 .scroll-mt-36 {
     scroll-margin-top: 9rem;
+}
+.scroll-mt-32 {
+    scroll-margin-top: 8rem;
 }
 .list-decimal {
     list-style-type: decimal;
@@ -2453,6 +2520,12 @@ details.collapse summary::-webkit-details-marker {
 }
 .border-t {
     border-top-width: 1px;
+}
+.border-b-2 {
+    border-bottom-width: 2px;
+}
+.border-l {
+    border-left-width: 1px;
 }
 .border-solid {
     border-style: solid;
@@ -2646,6 +2719,14 @@ details.collapse summary::-webkit-details-marker {
 .px-12 {
     padding-left: 3rem;
     padding-right: 3rem;
+}
+.px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.py-5 {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
 }
 .pb-16 {
     padding-bottom: 4rem;
@@ -3461,6 +3542,10 @@ body {
     --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
     box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
+.prose-strong\:text-white :is(:where(strong):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+}
 @media (min-width: 782px) {
     .md\:my-6 {
         margin-top: 1.5rem;
@@ -3502,10 +3587,17 @@ body {
         font-size: 1.875rem;
         line-height: 2.25rem;
     }
+    .md\:text-2xl {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
 }
 @media (min-width: 1024px) {
     .lg\:mt-0 {
         margin-top: 0px;
+    }
+    .lg\:mb-16 {
+        margin-bottom: 4rem;
     }
     .lg\:flex {
         display: flex;
@@ -3642,6 +3734,9 @@ body {
     }
     .lg\:text-\[50px\] {
         font-size: 50px;
+    }
+    .lg\:text-\[34px\] {
+        font-size: 34px;
     }
 }
 @media (min-width: 1280px) {
