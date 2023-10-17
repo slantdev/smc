@@ -1,5 +1,38 @@
 <?php
 
+acf_add_options_page(array(
+  'menu_slug' => 'site_settings',
+  'page_title' => 'Site Settings',
+  'active' => true,
+  'menu_title' => 'Site Settings',
+  'capability' => 'edit_posts',
+  'parent_slug' => '',
+  'position' => '',
+  'icon_url' => '',
+  'redirect' => true,
+  'post_id' => 'options',
+  'autoload' => false,
+  'update_button' => 'Update',
+  'updated_message' => 'Options Updated',
+));
+
+acf_add_options_page(array(
+  'menu_slug' => 'theme_settings',
+  'page_title' => 'Theme Settings',
+  'active' => true,
+  'menu_title' => 'Theme Settings',
+  'capability' => 'edit_posts',
+  'parent_slug' => 'site_settings',
+  'position' => '',
+  'icon_url' => '',
+  'redirect' => true,
+  'post_id' => 'options',
+  'autoload' => false,
+  'update_button' => 'Update',
+  'updated_message' => 'Options Updated',
+));
+
+
 /*
  * Add color picker pallete on admin
  */
