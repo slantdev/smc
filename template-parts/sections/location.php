@@ -31,7 +31,7 @@ include get_template_directory() . '/template-parts/layouts/section_settings.php
               Travelling by Car
             </div>
             <div class="collapse-content px-0">
-              <div class="prose prose-lg max-w-none px-4 pt-8">
+              <div class="prose prose-lg max-w-none px-6 pt-0">
                 Sed magna purus, fermentum eu, tincidunt eu, varius ut, felis. Pellentesque posuere. Nullam sagittis. Suspendisse non nisl sit amet velit hendrerit rutrum. Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula.
               </div>
             </div>
@@ -53,7 +53,7 @@ include get_template_directory() . '/template-parts/layouts/section_settings.php
               Travelling by Bus
             </div>
             <div class="collapse-content px-0">
-              <div class="prose prose-lg max-w-none px-4 pt-8">
+              <div class="prose prose-lg max-w-none px-6 pt-0">
                 Sed magna purus, fermentum eu, tincidunt eu, varius ut, felis. Pellentesque posuere. Nullam sagittis. Suspendisse non nisl sit amet velit hendrerit rutrum. Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula.
               </div>
             </div>
