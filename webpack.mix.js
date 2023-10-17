@@ -20,11 +20,21 @@ mix.postCss('resources/css/app.css', 'assets/css');
 
 mix.postCss('resources/css/editor-style.css', 'assets/css');
 
+mix.postCss('resources/css/admin-style.css', 'assets/css');
+
+mix.postCss('resources/css/acf-layouts.css', 'assets/css');
+
 mix.browserSync({
-  proxy: 'http://smc.local',
-  host: 'smc.local',
-  open: 'external',
+  proxy: 'smc.local',
+  //host: 'localhost',
+  //open: 'external',
   port: 8000,
+  watch: true,
+  files: [
+    'wp-content/themes/**/*.css',
+    'wp-content/themes/**/*.js',
+    'wp-content/themes/**/*.php',
+  ],
 });
 
 if (mix.inProduction()) {

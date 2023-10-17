@@ -1,0 +1,128 @@
+html {
+  @apply scroll-smooth;
+}
+.site-header,
+#top-nav .top-nav--container,
+#top-nav .top-nav--ul,
+#top-nav .svg-icon,
+#main-nav,
+#main-nav .main-nav--div,
+#main-nav .main-nav--ul > li > a,
+#main-nav #logo img {
+  @apply transition-all duration-500;
+}
+
+.site-header {
+  @apply bg-transparent;
+  &.header-shrink {
+    @apply bg-black bg-opacity-95;
+    #top-nav {
+      .top-nav--container {
+        @apply py-1;
+      }
+      .top-nav--ul {
+        @apply gap-x-2;
+      }
+      .svg-icon {
+        @apply h-[18px] w-[18px];
+      }
+    }
+    #main-nav {
+      @apply py-0;
+      #logo {
+        @apply py-2;
+        img {
+          @apply h-9 w-auto;
+        }
+      }
+      .main-nav--div {
+        @apply shadow-none;
+      }
+      .main-nav--ul {
+        > li > a {
+          @apply py-5 leading-[36px];
+        }
+      }
+    }
+  }
+}
+
+.menu-has-article {
+  @apply block py-1.5 relative;
+  > .svg-icon {
+    @apply invisible opacity-0 transition duration-300;
+  }
+  &:hover {
+    @apply font-semibold;
+    > .svg-icon {
+      @apply visible opacity-100;
+    }
+  }
+}
+.menu-article {
+  @apply hidden;
+}
+
+/* #Mega Menu Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.main-nav--ul {
+  > li {
+    @apply border-t-[6px] border-transparent transition duration-300;
+    > a {
+      @apply shadow-[inset_0_-5px_0px_0px_rgba(255,255,255,0)] transition duration-300;
+      @apply hover:shadow-[inset_0_-5px_0px_0px_rgba(255,255,255,1)];
+    }
+  }
+}
+.mega-menu {
+  @apply absolute left-0 w-full invisible opacity-0 transition-all duration-500 text-white;
+}
+
+/* #hoverable Class Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.hoverable {
+  @apply static transition-all duration-500;
+  &:hover {
+    @apply bg-black bg-opacity-95;
+    .mega-menu {
+      @apply visible opacity-100;
+    }
+  }
+}
+
+/* #toggle Class Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.toggleable > label:after {
+  content: '\25BC';
+  font-size: 10px;
+  padding-left: 6px;
+  position: relative;
+  top: -1px;
+}
+.toggle-input {
+  display: none;
+}
+.toggle-input:not(checked) ~ .mega-menu {
+  display: none;
+}
+.toggle-input:checked ~ .mega-menu {
+  display: block;
+}
+.toggle-input:checked + label {
+  color: white;
+  background: #2c5282; /*@apply bg-blue-800 */
+}
+.toggle-input:checked ~ label:after {
+  content: '\25B2';
+  font-size: 10px;
+  padding-left: 6px;
+  position: relative;
+  top: -1px;
+}
+
+#header-search {
+  @apply w-0 hidden;
+  &.show {
+    @apply block w-screen max-w-md md:w-[300px];
+  }
+}

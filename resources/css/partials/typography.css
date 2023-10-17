@@ -1,0 +1,26 @@
+@layer base {
+  h1,
+  .h1 {
+    @apply text-[54px] font-light leading-[1.1];
+  }
+  h2,
+  .h2 {
+    @apply text-[45px] font-semibold leading-[1.1];
+  }
+  h3,
+  .h3 {
+    @apply text-[34px] font-semibold leading-[1.1];
+  }
+  h4,
+  .h4 {
+    @apply text-[28px] font-semibold leading-[1.1];
+  }
+  h5,
+  .h5 {
+    @apply text-2xl font-normal leading-[1.1];
+  }
+  h6,
+  .h6 {
+    @apply text-lg font-bold leading-[1.1];
+  }
+}

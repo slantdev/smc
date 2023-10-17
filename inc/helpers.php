@@ -94,3 +94,49 @@ function smc_icon($atts = array())
 
   return $svg;
 }
+
+
+function smc_svg($atts = array())
+{
+  $atts = shortcode_atts(array(
+    'svg'  => false,
+    'svg_src' => '',
+    'group'  => 'shape',
+    'size'  => 16,
+    'class'  => false,
+    'label'  => false,
+  ), $atts);
+
+  if (empty($atts['svg']) && empty($atts['svg_src']))
+    return;
+
+  if ($atts['svg_src']) {
+    $icon_path = get_attached_file($atts['svg_src']);
+  } else {
+    $icon_path = get_theme_file_path('/assets/svg/' . $atts['group'] . '/' . $atts['svg'] . '.svg');
+  }
+  if (!file_exists($icon_path))
+    return;
+
+  $icon = file_get_contents($icon_path);
+
+  $class = 'svg-icon';
+  if (!empty($atts['class']))
+    $class .= ' ' . esc_attr($atts['class']);
+
+  if (false !== $atts['size']) {
+    $repl = sprintf('<svg class="' . $class . '" width="%d" height="%d" aria-hidden="true" role="img" focusable="false" ', $atts['size'], $atts['size']);
+    $svg  = preg_replace('/^<svg /', $repl, trim($icon)); // Add extra attributes to SVG code.
+  } else {
+    $svg = preg_replace('/^<svg /', '<svg class="' . $class . '"', trim($icon));
+  }
+  $svg  = preg_replace("/([\n\t]+)/", ' ', $svg); // Remove newlines & tabs.
+  $svg  = preg_replace('/>\s*</', '><', $svg); // Remove white space between SVG tags.
+
+  if (!empty($atts['label'])) {
+    $svg = str_replace('<svg class', '<svg aria-label="' . esc_attr($atts['label']) . '" class', $svg);
+    $svg = str_replace('aria-hidden="true"', '', $svg);
+  }
+
+  return $svg;
+}

@@ -1,0 +1,9 @@
+.btn {
+  @apply inline-block h-auto min-h-min px-6 lg:px-8 py-2.5 lg:py-3 border-transparent text-base lg:text-lg font-semibold normal-case no-underline rounded-full transition-all duration-300 hover:bg-transparent;
+  &.btn-outline {
+    @apply border-white border-[3px];
+  }
+  &.btn-white {
+    @apply bg-white border-transparent hover:brightness-75;
+  }
+}

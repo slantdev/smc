@@ -7,12 +7,109 @@
   \*****************************/
 /***/ (() => {
 
-// Navigation toggle
-window.addEventListener('load', function () {
-  var main_navigation = document.querySelector('#primary-menu');
-  document.querySelector('#primary-menu-toggle').addEventListener('click', function (e) {
+jQuery(function ($) {
+  //the shrinkHeader variable is where you tell the scroll effect to start.
+  var shrinkHeader = 100;
+  headerShrink();
+  $(window).scroll(function () {
+    //console.log(scroll);
+    headerShrink();
+  });
+  function getCurrentScroll() {
+    return window.pageYOffset || document.documentElement.scrollTop;
+  }
+  function headerShrink() {
+    var scroll = getCurrentScroll();
+    if (scroll >= shrinkHeader) {
+      $('.site-header').addClass('header-shrink');
+    } else {
+      $('.site-header').removeClass('header-shrink');
+    }
+  }
+  $('.menu-has-article').hover(function () {
+    // $('.menu-article').css({
+    //   visibility: 'hidden',
+    //   opacity: '0',
+    //   zIndex: '-10',
+    // });
+    // $('.menu-article').fadeOut('slow', function () {});
+    $('.menu-article').hide();
+    var dataArticle = $(this).data('target');
+    //console.log(dataArticle);
+    $('#' + dataArticle).fadeIn('slow', function () {});
+    // $('#' + dataArticle).css({
+    //   visibility: 'visible',
+    //   opacity: '100',
+    //   zIndex: '0',
+    // });
+  }, function () {
+    // let dataArticle = $(this).data('target');
+    // console.log(dataArticle);
+    // $('#' + dataArticle).css({ visibility: 'hidden', opacity: '0' });
+  });
+  $('.main-nav--ul > li').hover(function () {
+    //$('#main-nav').addClass('bg-brand-bluedark bg-opacity-95');
+  }, function () {
+    //$('#main-nav').removeClass('bg-brand-bluedark bg-opacity-95');
+  });
+
+  // Mobile Menu
+  $('#mobilemenu-open').click(function (e) {
     e.preventDefault();
-    main_navigation.classList.toggle('hidden');
+    $('#mobilemenu').removeClass('translate-x-full');
+    $('#mobilemenu-overlay').removeClass('invisible opacity-0').addClass('visible opacity-100');
+    $('body').addClass('overflow-y-hidden');
+  });
+  $('#mobilemenu-close, #mobilemenu-overlay').click(function (e) {
+    e.preventDefault();
+    $('#mobilemenu').addClass('translate-x-full');
+    $('#mobilemenu-overlay').removeClass('visible opacity-100').addClass('invisible opacity-0');
+    $('body').removeClass('overflow-y-hidden');
+  });
+  $('#mobilemenu a').click(function (e) {
+    $('#mobilemenu').addClass('translate-x-full');
+    $('#mobilemenu-overlay').removeClass('visible opacity-100').addClass('invisible opacity-0');
+    $('body').removeClass('overflow-y-hidden');
+  });
+
+  // Header Search
+  $('#header-search-button').on('click', function () {
+    $('#header-search').toggleClass('show');
+    $('#searchform-input').val('');
+    $('#searchform-input').focus();
+  });
+  $(window).click(function () {
+    if ($('#header-search').hasClass('show')) {
+      $('#header-search').removeClass('show');
+      $('#searchform-input').val('');
+    }
+  });
+  $('#header-search, #header-search-button').click(function (event) {
+    event.stopPropagation();
+  });
+
+  // Accordion
+  $('.collapse').click(function (e) {
+    e.preventDefault();
+    $('.collapse').find('input[type=checkbox]').prop('checked', false);
+    $(this).find('input[type=checkbox]').prop('checked', true);
+    $('html, body').scrollTop($(this).offset().top - 16 - $('.site-header').outerHeight(true));
+  });
+  $("a[href*='#']").click(function (e) {
+    //e.preventDefault();
+    //var urlhash = $(location).prop('hash');
+    var targetEle = this.hash;
+    var $targetEle = $(targetEle);
+    $('html, body').stop().animate({
+      scrollTop: $targetEle.offset().top - 16 - $('.site-header').outerHeight(true)
+    }, 500, 'swing', function () {
+      window.location.hash = targetEle;
+    });
+    if ($targetEle.hasClass('collapse')) {
+      //console.log('collapse');
+      $('.collapse').find('input[type=checkbox]').prop('checked', false);
+      $targetEle.find('input[type=checkbox]').prop('checked', true);
+    }
   });
 });
 
@@ -35,6 +132,32 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************!*\
   !*** ./resources/css/editor-style.css ***!
   \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/css/admin-style.css":
+/*!***************************************!*\
+  !*** ./resources/css/admin-style.css ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/css/acf-layouts.css":
+/*!***************************************!*\
+  !*** ./resources/css/acf-layouts.css ***!
+  \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -131,6 +254,8 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/assets/js/app": 0,
+/******/ 			"assets/css/acf-layouts": 0,
+/******/ 			"assets/css/admin-style": 0,
 /******/ 			"assets/css/editor-style": 0,
 /******/ 			"assets/css/app": 0
 /******/ 		};
@@ -172,7 +297,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunktailpress"] = self["webpackChunktailpress"] || [];
+/******/ 		var chunkLoadingGlobal = self["webpackChunksmc"] = self["webpackChunksmc"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();
@@ -182,9 +307,11 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["assets/css/editor-style","assets/css/app"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["assets/css/editor-style","assets/css/app"], () => (__webpack_require__("./resources/css/app.css")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/css/editor-style","assets/css/app"], () => (__webpack_require__("./resources/css/editor-style.css")))
+/******/ 	__webpack_require__.O(undefined, ["assets/css/acf-layouts","assets/css/admin-style","assets/css/editor-style","assets/css/app"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["assets/css/acf-layouts","assets/css/admin-style","assets/css/editor-style","assets/css/app"], () => (__webpack_require__("./resources/css/app.css")))
+/******/ 	__webpack_require__.O(undefined, ["assets/css/acf-layouts","assets/css/admin-style","assets/css/editor-style","assets/css/app"], () => (__webpack_require__("./resources/css/editor-style.css")))
+/******/ 	__webpack_require__.O(undefined, ["assets/css/acf-layouts","assets/css/admin-style","assets/css/editor-style","assets/css/app"], () => (__webpack_require__("./resources/css/admin-style.css")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/css/acf-layouts","assets/css/admin-style","assets/css/editor-style","assets/css/app"], () => (__webpack_require__("./resources/css/acf-layouts.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
