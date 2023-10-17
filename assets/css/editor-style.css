@@ -2067,6 +2067,10 @@ details.collapse summary::-webkit-details-marker {
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
+.my-6 {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
 .\!mb-0 {
     margin-bottom: 0px !important;
 }
@@ -2738,6 +2742,9 @@ details.collapse summary::-webkit-details-marker {
 }
 .text-center {
     text-align: center;
+}
+.text-right {
+    text-align: right;
 }
 .text-2xl {
     font-size: 1.5rem;

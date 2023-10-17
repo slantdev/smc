@@ -22,3 +22,7 @@
     @apply text-primary;
   }
 }
+
+.swiper-button-lock {
+  @apply hidden;
+}

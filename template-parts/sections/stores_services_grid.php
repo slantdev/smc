@@ -7,17 +7,37 @@ include get_template_directory() . '/template-parts/layouts/section_settings.php
  * $section_padding_top
  * $section_padding_bottom
 */
+
+
 $grid = get_sub_field('stores_services_grid');
+$heading = $grid['heading'];
+$description = $grid['description'];
+$link = $grid['link'];
 $boxes = $grid['stores_services_box'];
 $primary_color = get_field('primary_color', 'option');
 $button_style = 'color: ' . $primary_color . ';' . 'border-color: ' . $primary_color . ';' . 'color: ' . $primary_color . ';';
-
-//preint_r($whats_on);
 
 ?>
 
 <section id="<?php echo $section_id ?>" style="<?php echo $section_style ?>">
   <div class="relative container max-w-screen-xl mx-auto <?php echo $section_padding_top . ' ' . $section_padding_bottom ?>">
+
+    <?php if ($heading) : ?>
+      <div class="flex gap-x-6 mb-12">
+        <h2 class="flex-none text-4xl font-bold text-black"><?php echo $heading ?></h2>
+        <div class="border-b border-solid border-slate-400 w-full">&nbsp;</div>
+      </div>
+    <?php endif; ?>
+    <?php if ($description || $link) : ?>
+      <div class="flex gap-x-8 mb-12">
+        <?php if ($description) : ?>
+          <div class="w-1/2 text-slate-600"><?php echo $description ?></div>
+        <?php endif; ?>
+        <?php if ($link) : ?>
+          <div class="w-1/2 text-right"><a href="<?php echo $link['url'] ?>" class="underline"><?php echo $link['title'] ?></a></div>
+        <?php endif; ?>
+      </div>
+    <?php endif; ?>
 
     <?php if ($boxes) : ?>
       <div class="grid grid-cols-3 shadow-[0_6px_6px_rgba(0,0,0,0.16)]">

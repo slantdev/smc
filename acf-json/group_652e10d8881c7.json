@@ -30,7 +30,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
-                "class": "",
+                "class": "label-hidden",
                 "id": ""
             },
             "layout": "block",
@@ -187,7 +187,7 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1697517840,
+    "modified": 1697567230,
     "acfe_categories": {
         "layout": "Layout"
     }

@@ -38,11 +38,11 @@ $size = 'full';
               </div>
             <?php endforeach; ?>
           </div>
-          <div class="flex items-center justify-center gap-x-4 mt-6 pb-8">
-            <button type="button" class="<?php echo $carousel_id ?>--button-prev button-prev w-10 h-10 flex items-center justify-center rounded-full shadow-md cursor-pointer hover:bg-white text-white hover:text-gray-500 transition-all duration-200">
+          <div class="flex items-center justify-center gap-x-4">
+            <button type="button" class="<?php echo $carousel_id ?>--button-prev button-prev w-10 h-10 flex items-center justify-center rounded-full shadow-md cursor-pointer hover:bg-white text-white hover:text-gray-500 transition-all duration-200 my-6">
               <?php echo smc_icon(array('icon' => 'chevron', 'group' => 'utilities', 'size' => '16', 'class' => 'rotate-180')); ?>
             </button>
-            <button type="button" class="<?php echo $carousel_id ?>--button-next button-next w-10 h-10 flex items-center justify-center rounded-full shadow-md cursor-pointer hover:bg-white text-white hover:text-gray-500 transition-all duration-200">
+            <button type="button" class="<?php echo $carousel_id ?>--button-next button-next w-10 h-10 flex items-center justify-center rounded-full shadow-md cursor-pointer hover:bg-white text-white hover:text-gray-500 transition-all duration-200 my-6">
               <?php echo smc_icon(array('icon' => 'chevron', 'group' => 'utilities', 'size' => '16', 'class' => '')); ?>
             </button>
           </div>
