@@ -104,7 +104,7 @@ if (!$categories) {
                 </div>
               </div>
             <?php elseif ($grid_style == 'card') : ?>
-              <div class="shadow-[0_3px_6px_rgba(0,0,0,0.16)] rounded-xl overflow-hidden">
+              <div class="shadow-[0_3px_6px_rgba(0,0,0,0.16)] bg-white rounded-xl overflow-hidden">
                 <div class="aspect-w-16 aspect-h-10 rounded-t-xl">
                   <?php if (has_post_thumbnail($id)) : ?>
                     <?php echo get_the_post_thumbnail($id, 'full', array('class' => 'w-full h-full object-cover rounded-t-xl')); ?>
