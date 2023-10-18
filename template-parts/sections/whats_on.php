@@ -110,7 +110,7 @@ if (!$categories) {
                     <?php echo get_the_post_thumbnail($id, 'full', array('class' => 'w-full h-full object-cover rounded-t-xl')); ?>
                   <?php endif; ?>
                 </div>
-                <div class="p-6">
+                <div class="p-6 prose">
                   <h3 class="text-xl font-bold mb-4"><?php the_title() ?></h3>
                   <div class="text-slate-700 text-base"><?php the_content() ?></div>
                 </div>
