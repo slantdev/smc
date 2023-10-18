@@ -131,10 +131,11 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "40",
                                 "class": "",
                                 "id": ""
                             },
+                            "acfe_permissions": "",
                             "taxonomy": [
                                 "whats-on-category"
                             ],
@@ -169,10 +170,11 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "20",
                                 "class": "",
                                 "id": ""
                             },
+                            "acfe_permissions": "",
                             "default_value": "",
                             "acfe_settings": "",
                             "acfe_validate": "",
@@ -182,6 +184,33 @@
                             "step": "",
                             "prepend": "",
                             "append": ""
+                        },
+                        {
+                            "key": "field_652f34701b1f7",
+                            "label": "Grid Style",
+                            "name": "grid_style",
+                            "aria-label": "",
+                            "type": "button_group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "40",
+                                "class": "",
+                                "id": ""
+                            },
+                            "acfe_permissions": "",
+                            "choices": {
+                                "simple": "Simple",
+                                "card": "Card",
+                                "banner": "Banner"
+                            },
+                            "default_value": "card",
+                            "return_format": "value",
+                            "acfe_settings": "",
+                            "acfe_validate": "",
+                            "allow_null": 0,
+                            "layout": "horizontal"
                         }
                     ],
                     "acfe_group_modal": 0,
@@ -266,7 +295,7 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1697567914,
+    "modified": 1697593270,
     "acfe_categories": {
         "layout": "Layout"
     }
