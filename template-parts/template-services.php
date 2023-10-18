@@ -47,7 +47,7 @@ get_template_part('template-parts/layouts/page-header', '', array('breadcrumbs' 
               <div class="swiper-slide w-[148px]"><button type="button" data-id="<?php echo $term_id ?>" data-slug="<?php echo $term->slug ?>" class="store-filter-button text-center flex flex-col items-center gap-y-3 mx-auto text-black hover:text-primary transition">
                   <?php
                   if ($icon) {
-                    echo smc_svg(array('svg_src' => $icon['id'], 'size' => '96', 'class' => 'w-24 h-24'));
+                    echo smc_icon(array('icon_src' => $icon['id'], 'size' => '96', 'class' => 'w-24 h-24'));
                   }
                   ?>
                   <h5 class="text-base uppercase font-bold leading-tight"><?php echo $term->name ?></h5>
