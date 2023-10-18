@@ -272,13 +272,53 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "50",
                                         "class": "",
                                         "id": ""
                                     },
-                                    "return_format": "",
+                                    "acfe_permissions": "",
+                                    "return_format": "array",
                                     "acfe_settings": "",
                                     "acfe_validate": ""
+                                },
+                                {
+                                    "key": "field_652f47a8e0b85",
+                                    "label": "Store Category",
+                                    "name": "store_category",
+                                    "aria-label": "",
+                                    "type": "acfe_taxonomy_terms",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "acfe_permissions": "",
+                                    "taxonomy": [
+                                        "store-category"
+                                    ],
+                                    "allow_terms": "",
+                                    "allow_level": "",
+                                    "field_type": "select",
+                                    "default_value": [],
+                                    "return_format": "id",
+                                    "ui": 1,
+                                    "allow_null": 1,
+                                    "placeholder": "",
+                                    "search_placeholder": "",
+                                    "multiple": 0,
+                                    "ajax": 0,
+                                    "save_terms": 0,
+                                    "load_terms": 0,
+                                    "acfe_settings": "",
+                                    "acfe_validate": "",
+                                    "choices": [],
+                                    "layout": "",
+                                    "toggle": 0,
+                                    "allow_custom": 0,
+                                    "other_choice": 0
                                 },
                                 {
                                     "key": "field_652e04d929052",
@@ -450,7 +490,7 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1697568010,
+    "modified": 1697597446,
     "acfe_categories": {
         "layout": "Layout"
     }

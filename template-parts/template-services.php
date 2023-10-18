@@ -5,6 +5,12 @@
  * Template Post Type: page
  *
  */
+
+$store_category = '';
+if (get_query_var('cat')) {
+  $store_category = get_query_var('cat');
+}
+
 get_header();
 
 get_template_part('template-parts/layouts/page-header', '', array('breadcrumbs' => false));
@@ -83,11 +89,18 @@ get_template_part('template-parts/layouts/page-header', '', array('breadcrumbs' 
       jQuery(document).ready(function($) {
         var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
 
+        var store_category = <?php echo $store_category ?>;
+        if (store_category) {
+          $('.store-filter-button').removeClass('button-active');
+          $('.store-filter-button[data-id="' + store_category + '"]').addClass('button-active');
+        }
+
         function load_all_stores(page) {
           $('.stores-container .blocker').show();
           var data = {
             page: page,
             per_page: '-1',
+            category: <?php echo $store_category ?>,
             action: 'pagination_load_stores',
           };
           //console.log(data);
@@ -121,6 +134,9 @@ get_template_part('template-parts/layouts/page-header', '', array('breadcrumbs' 
             //console.log(term_id, term_slug);
             $('.store-filter-button').removeClass('button-active');
             $(this).addClass('button-active');
+
+            var newURL = location.href.split("?")[0];
+            window.history.pushState('object', document.title, newURL);
 
             $.ajax({
               type: 'POST',

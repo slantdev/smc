@@ -48,6 +48,7 @@ $button_style = 'color: ' . $primary_color . ';' . 'border-color: ' . $primary_c
             $heading = $content['heading'];
             $text = $content['text'];
             $link = $content['link'];
+            $store_category = $content['store_category'];
             $background_color = $content['background_color'];
             $box_style = 'background-color: ' . $background_color . ';';
             ?>
@@ -58,8 +59,14 @@ $button_style = 'color: ' . $primary_color . ';' . 'border-color: ' . $primary_c
               <?php if ($text) : ?>
                 <div class="text-slate-500 mt-4 text-base"><?php echo $text ?></div>
               <?php endif; ?>
-              <?php if ($link) : ?>
-                <div class="mt-8"><a href="<?php echo $link['url'] ?>" class="inline-block border py-2 px-10 rounded-full hover:underline" style="<?php echo $button_style ?>"><?php echo $link['title'] ?></a></div>
+              <?php
+              if ($link) :
+                $link_url = $link['url'];
+                if ($store_category) {
+                  $link_url = $link['url'] . '?cat=' . $store_category;
+                }
+              ?>
+                <div class="mt-8"><a href="<?php echo $link_url ?>" class="inline-block border py-2 px-10 rounded-full hover:underline" style="<?php echo $button_style ?>"><?php echo $link['title'] ?></a></div>
               <?php endif; ?>
             </div>
           <?php else : ?>

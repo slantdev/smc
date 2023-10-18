@@ -12,6 +12,7 @@ function pagination_load_stores()
     // Sanitize the received page
     $page = sanitize_text_field($_POST['page']);
     $per_page = sanitize_text_field($_POST['per_page']);
+    $category = sanitize_text_field($_POST['category']);
     $cur_page = $page;
     $page -= 1;
     $previous_btn = true;
@@ -55,6 +56,56 @@ function pagination_load_stores()
         ),
       )
     );
+
+    if ($category) {
+      $central_stores = new WP_Query(
+        array(
+          'post_type'         => 'store',
+          'post_status '      => 'publish',
+          'orderby'           => 'menu_order',
+          'order'             => 'ASC',
+          'posts_per_page'    => $per_page,
+          'offset'            => $start,
+          'tax_query' => array(
+            'relation' => 'AND',
+            array(
+              'taxonomy' => 'store-area',
+              'field' => 'slug',
+              'terms' => 'central',
+            ),
+            array(
+              'taxonomy' => 'store-category',
+              'field' => 'id',
+              'terms' => $category,
+            ),
+          )
+        )
+      );
+      $market_street_stores = new WP_Query(
+        array(
+          'post_type'         => 'store',
+          'post_status '      => 'publish',
+          'orderby'           => 'menu_order',
+          'order'             => 'ASC',
+          'posts_per_page'    => $per_page,
+          'offset'            => $start,
+          'tax_query' => array(
+            'relation' => 'AND',
+            array(
+              'taxonomy' => 'store-area',
+              'field' => 'slug',
+              'terms' => 'market-street',
+            ),
+            array(
+              'taxonomy' => 'store-category',
+              'field' => 'id',
+              'terms' => $category,
+            ),
+          ),
+        )
+      );
+    }
+
     $count = new WP_Query(
       array(
         'post_type'         => 'store',
@@ -108,6 +159,8 @@ function pagination_load_stores()
       echo '</div>';
     endif;
 
+    wp_reset_postdata();
+
     if ($market_street_stores->have_posts()) :
       echo '<div class="mt-24"></div>';
       echo '<div class="flex gap-x-6 mb-12">
@@ -152,7 +205,12 @@ function pagination_load_stores()
       echo '</div>';
     endif;
 
+    wp_reset_postdata();
 
+
+    if (!$central_stores->have_posts() && !$market_street_stores->have_posts()) {
+      echo '<div class="text-center py-4 px-8">No Store Found</div>';
+    }
 
     // Paginations
     $no_of_paginations = ceil($count / $per_page);
@@ -371,6 +429,8 @@ function filter_stores()
     //$response = '<div class="text-center py-4 px-8">No Store Found</div>';
   }
 
+  wp_reset_postdata();
+
   echo $response;
 
   $market_street_stores = new WP_Query(
@@ -390,7 +450,7 @@ function filter_stores()
         array(
           'taxonomy' => 'store-area',
           'field' => 'slug',
-          'terms' => 'central',
+          'terms' => 'market-street',
         ),
       ),
     )
@@ -446,7 +506,9 @@ function filter_stores()
     //$response = '<div class="text-center py-4 px-8">No Store Found</div>';
   }
 
-  if (!$central_stores->have_posts() || !$market_street_stores->have_posts()) {
+  wp_reset_postdata();
+
+  if (!$central_stores->have_posts() && !$market_street_stores->have_posts()) {
     $response = '<div class="text-center py-4 px-8">No Store Found</div>';
   }
 
