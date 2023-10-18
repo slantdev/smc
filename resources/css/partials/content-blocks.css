@@ -21,6 +21,9 @@
   &.button-active {
     @apply text-primary;
   }
+  > svg {
+    @apply w-24 h-24;
+  }
 }
 
 .swiper-button-lock {
