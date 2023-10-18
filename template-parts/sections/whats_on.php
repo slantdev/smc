@@ -63,7 +63,7 @@ if (!$categories) {
       </div>
     <?php endif; ?>
     <?php if ($description) : ?>
-      <div class="flex gap-x-8">
+      <div class="flex gap-x-8 mb-8">
         <div class="w-1/2 text-slate-600"><?php echo $description ?></div>
       </div>
     <?php endif; ?>
@@ -83,7 +83,7 @@ if (!$categories) {
           <?php endwhile; ?>
         </div>
       <?php else : ?>
-        <div class="grid grid-cols-3 gap-x-10 mt-8">
+        <div class="grid grid-cols-3 gap-x-10">
           <?php while ($whats_on->have_posts()) : $whats_on->the_post(); ?>
             <?php
             $id = get_the_ID();
