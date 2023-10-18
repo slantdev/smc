@@ -124,7 +124,7 @@ function smc_svg($atts = array())
   if (!empty($atts['class']))
     $class .= ' ' . esc_attr($atts['class']);
 
-  if (false !== $atts['size']) {
+  if (false != $atts['size']) {
     $repl = sprintf('<svg class="' . $class . '" width="%d" height="%d" aria-hidden="true" role="img" focusable="false" ', $atts['size'], $atts['size']);
     $svg  = preg_replace('/^<svg /', $repl, trim($icon)); // Add extra attributes to SVG code.
   } else {
