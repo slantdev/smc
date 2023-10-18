@@ -32,6 +32,9 @@ if (have_rows('section', $the_id)) :
     elseif (get_row_layout() == 'location') :
       get_template_part('template-parts/sections/location');
 
+    elseif (get_row_layout() == 'contact') :
+      get_template_part('template-parts/sections/contact');
+
     endif;
 
   // End loop.
