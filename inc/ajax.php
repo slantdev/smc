@@ -424,14 +424,16 @@ function filter_stores()
     endwhile;
 
     $response .= '</div>';
+
+    $response .= '<div class="mt-24"></div>';
     //$response .= '<div class="blocker absolute inset-0 bg-white bg-opacity-40" style="display: none;"></div>';
   } else {
     //$response = '<div class="text-center py-4 px-8">No Store Found</div>';
   }
 
-  wp_reset_postdata();
+  //echo $response;
 
-  echo $response;
+  //wp_reset_postdata();
 
   $market_street_stores = new WP_Query(
     array(
@@ -457,7 +459,6 @@ function filter_stores()
   );
 
   if ($market_street_stores->have_posts()) {
-    $response = '';
     $response .= '<div class="mt-24"></div>';
     $response .= '<div class="flex gap-x-6 mb-12">
         <h2 class="flex-none text-4xl font-bold text-black">South Melbourne - Market Street</h2>

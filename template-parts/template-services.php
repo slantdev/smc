@@ -89,7 +89,7 @@ get_template_part('template-parts/layouts/page-header', '', array('breadcrumbs' 
       jQuery(document).ready(function($) {
         var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
 
-        var store_category = <?php echo $store_category ? $store_category : NULL ?>;
+        var store_category = <?php echo ($store_category != "") ? $store_category : "''" ?>;
         if (store_category) {
           $('.store-filter-button').removeClass('button-active');
           $('.store-filter-button[data-id="' + store_category + '"]').addClass('button-active');
@@ -100,7 +100,7 @@ get_template_part('template-parts/layouts/page-header', '', array('breadcrumbs' 
           var data = {
             page: page,
             per_page: '-1',
-            category: <?php echo $store_category ?>,
+            category: <?php echo ($store_category != "") ? $store_category : "''" ?>,
             action: 'pagination_load_stores',
           };
           //console.log(data);
