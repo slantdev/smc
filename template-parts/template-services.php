@@ -167,5 +167,6 @@ get_template_part('template-parts/layouts/page-header', '', array('breadcrumbs' 
   </div>
 </section>
 
+<?php get_template_part('template-parts/page', 'builder'); ?>
 
 <?php get_footer(); ?>
