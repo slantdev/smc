@@ -43,13 +43,14 @@ $stores = new WP_Query(
             <?php while ($stores->have_posts()) : $stores->the_post(); ?>
               <?php
               $id = get_the_ID();
+              $permalink = get_the_permalink($id);
               $store_logo_white = get_field('store_logo_white', $id);
               //preint_r($id);
               if ($store_logo_white) :
               ?>
                 <div class="swiper-slide">
                   <div class="flex flex-col items-center justify-center">
-                    <img src="<?php echo esc_url($store_logo_white['sizes']['medium']); ?>" alt="<?php echo esc_attr($store_logo_white['alt']); ?>" class="">
+                    <a href="<?php echo $permalink ?>"><img src="<?php echo esc_url($store_logo_white['sizes']['medium']); ?>" alt="<?php echo esc_attr($store_logo_white['alt']); ?>" class=""></a>
                   </div>
                 </div>
               <?php endif; ?>
