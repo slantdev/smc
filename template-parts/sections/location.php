@@ -10,7 +10,7 @@ include get_template_directory() . '/template-parts/layouts/section_settings.php
 
 ?>
 
-<section id="<?php echo $section_id ?>" class="bg-brand-blue" style="<?php echo $section_style ?><?php echo $section_style_2 ?>">
+<section id="<?php echo $section_id ?>" class="" style="<?php echo $section_style ?>">
   <div class="relative <?php echo $section_padding_top . ' ' . $section_padding_bottom ?>">
 
     <div class="container max-w-screen-xl">

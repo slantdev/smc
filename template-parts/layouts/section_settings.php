@@ -9,7 +9,7 @@ if ($section_background_color) {
   $section_style .= ' background-color:' . $section_background_color . ';';
 }
 $section_text_color = $section_settings['section_text_color'];
-if ($section_text_color) {
+if ($section_text_color && $section_text_color !== 'default') {
   $section_style .= ' color:' . $section_text_color . ';';
 }
 $spacing_top = $section_settings['section_spacing']['spacing_top'];
