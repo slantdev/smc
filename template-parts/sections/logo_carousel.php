@@ -56,8 +56,8 @@ $stores = new WP_Query(
               <?php endif; ?>
             <?php endwhile; ?>
           </div>
-          <div class="<?php echo $carousel_id ?>--button-prev swiper-button-next"></div>
-          <div class="<?php echo $carousel_id ?>--button-next swiper-button-prev"></div>
+          <div class="<?php echo $carousel_id ?>--button-prev swiper-button-prev"></div>
+          <div class="<?php echo $carousel_id ?>--button-next swiper-button-next"></div>
         </div>
         <?php
         echo '<script>';
