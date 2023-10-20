@@ -12,11 +12,10 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "65",
                 "class": "",
                 "id": ""
             },
-            "acfe_save_meta": 0,
             "uploader": "",
             "return_format": "array",
             "acfe_thumbnail": 0,
@@ -29,6 +28,30 @@
             "mime_types": "",
             "preview_size": "medium",
             "library": "all"
+        },
+        {
+            "key": "field_6532ba5fe77fe",
+            "label": "Banner Alignment",
+            "name": "banner_alignment",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "35",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "top": "Top",
+                "middle": "Middle",
+                "bottom": "Bottom"
+            },
+            "default_value": "middle",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
         },
         {
             "key": "field_6515189fc550b",
@@ -44,7 +67,6 @@
                 "class": "",
                 "id": ""
             },
-            "acfe_save_meta": 0,
             "uploader": "",
             "return_format": "array",
             "acfe_thumbnail": 1,
@@ -55,7 +77,34 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
-            "preview_size": "medium",
+            "preview_size": "thumbnail",
+            "library": "all"
+        },
+        {
+            "key": "field_6532bc3627e83",
+            "label": "Store Logo White",
+            "name": "store_logo_white",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "uploader": "",
+            "return_format": "array",
+            "acfe_thumbnail": 0,
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "thumbnail",
             "library": "all"
         },
         {
@@ -72,7 +121,6 @@
                 "class": "",
                 "id": ""
             },
-            "acfe_save_meta": 0,
             "layout": "block",
             "acfe_seamless_style": 1,
             "sub_fields": [
@@ -90,7 +138,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "acfe_save_meta": 0,
                     "default_value": "",
                     "acfe_textarea_code": 0,
                     "maxlength": "",
@@ -112,7 +159,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "acfe_save_meta": 0,
                     "default_value": "",
                     "tabs": "all",
                     "toolbar": "full",
@@ -139,7 +185,6 @@
                 "class": "",
                 "id": ""
             },
-            "acfe_save_meta": 0,
             "layout": "row",
             "acfe_seamless_style": 1,
             "sub_fields": [
@@ -157,7 +202,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "acfe_save_meta": 0,
                     "default_value": "",
                     "maxlength": "",
                     "placeholder": "",
@@ -178,7 +222,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "acfe_save_meta": 0,
                     "return_format": "array"
                 },
                 {
@@ -195,7 +238,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "acfe_save_meta": 0,
                     "return_format": "array"
                 },
                 {
@@ -212,7 +254,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "acfe_save_meta": 0,
                     "return_format": "array"
                 }
             ],
@@ -235,7 +276,6 @@
                 "class": "",
                 "id": ""
             },
-            "acfe_save_meta": 0,
             "acfe_repeater_stylised_button": 1,
             "layout": "table",
             "pagination": 0,
@@ -259,7 +299,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "acfe_save_meta": 0,
                     "default_value": "",
                     "maxlength": "",
                     "placeholder": "",
@@ -281,7 +320,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "acfe_save_meta": 0,
                     "default_value": "",
                     "maxlength": "",
                     "placeholder": "",
@@ -290,6 +328,34 @@
                     "parent_repeater": "field_651518692c194"
                 }
             ]
+        },
+        {
+            "key": "field_6532bc605ac2a",
+            "label": "Store Gallery",
+            "name": "store_gallery",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "insert": "append",
+            "preview_size": "thumbnail"
         }
     ],
     "location": [
@@ -317,7 +383,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1695947911,
+    "modified": 1697823870,
     "acfe_categories": {
         "cpt": "CPT"
     }

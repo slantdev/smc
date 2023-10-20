@@ -1,5 +1,22 @@
 <?php
+$primary_color = get_field('primary_color', 'option');
+$gallery_button_style = '';
+if ($primary_color) {
+  $gallery_button_style = 'background-color: ' . $primary_color . ';';
+}
+
 $store_page_banner = get_field('store_page_banner');
+$banner_alignment = get_field('banner_alignment');
+$banner_class = '';
+if ($banner_alignment == 'top') {
+  $banner_class = 'object-top';
+} elseif ($banner_alignment == 'middle') {
+  $banner_class = 'object-center';
+} elseif ($banner_alignment == 'bottom') {
+  $banner_class = 'object-bottom';
+} else {
+  $banner_class = 'object-center';
+}
 $store_image = get_field('store_image');
 $description = get_field('description');
 $contact_info = get_field('contact_info');
@@ -22,11 +39,12 @@ if ($location_terms) {
   }
   $store_location = join(", ", $locations);
 }
+$store_gallery = get_field('store_gallery');
 ?>
-<section class="relative w-full 2xl:h-[412px] bg-black">
+<section class="relative w-full 2xl:h-[512px] bg-black">
   <?php if ($store_page_banner) { ?>
     <div class="absolute inset-0 z-0">
-      <img src="<?php echo $store_page_banner['url'] ?>" alt="<?php echo $store_page_banner['alt'] ?>" class="object-cover h-full w-full">
+      <img src="<?php echo $store_page_banner['url'] ?>" alt="<?php echo $store_page_banner['alt'] ?>" class="object-cover h-full w-full <?php echo $banner_class ?>">
     </div>
   <?php } ?>
 </section>
@@ -75,7 +93,7 @@ if ($location_terms) {
                 <div><a href="<?php echo $contact_info['website']['url'] ?>" target="_blank" class="hover:underline"><?php echo $contact_info['website']['title'] ?></a></div>
               </div>
             <?php endif; ?>
-            <?php if ($contact_info['phone']) : ?>
+            <?php if ($contact_info['instagram']) : ?>
               <div class="flex gap-x-5 items-center">
                 <div class="flex-none"><?php echo smc_icon(array('icon' => 'line-instagram', 'group' => 'utilities', 'size' => '32', 'class' => 'text-black')); ?></div>
                 <div><a href="<?php echo $contact_info['instagram']['url'] ?>" target="_blank" class="hover:underline"><?php echo $contact_info['instagram']['title'] ?></a></div>
@@ -128,3 +146,37 @@ if ($location_terms) {
     </div>
   </div>
 </section>
+
+<?php if ($store_gallery) : ?>
+  <section class="relative pt-20 pb-20 bg-[#F4F4F2]">
+    <div class="container max-w-screen-lg">
+      <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff; --swiper-navigation-size: 20px" class="swiper gallerySwiper rounded-lg xl:rounded-xl">
+        <div class="swiper-wrapper">
+          <?php foreach ($store_gallery as $slide) : ?>
+            <div class="swiper-slide w-full">
+              <div class="aspect-w-16 aspect-h-9">
+                <img src="<?php echo $slide['url'] ?>" class="object-cover w-full h-full" />
+              </div>
+            </div>
+          <?php endforeach; ?>
+        </div>
+        <div class="swiper-button-next p-4 right-0" style="<?php echo $gallery_button_style ?>"></div>
+        <div class="swiper-button-prev p-4 left-0" style="<?php echo $gallery_button_style ?>"></div>
+      </div>
+    </div>
+    <script>
+      var gallerySwiper = new Swiper(".gallerySwiper", {
+        loop: true,
+        watchOverflow: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
+  </section>
+<?php endif; ?>

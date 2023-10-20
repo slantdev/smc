@@ -12,12 +12,22 @@ $logo_carousel = get_sub_field('logo_carousel');
 $logo_gallery = $logo_carousel['logo_gallery'];
 $size = 'full';
 
+$stores = new WP_Query(
+  array(
+    'post_type'         => 'store',
+    'post_status '      => 'publish',
+    'orderby'           => 'menu_order',
+    'order'             => 'ASC',
+    'posts_per_page'    => -1,
+  )
+);
+
 ?>
 
 <section id="<?php echo $section_id ?>" class="relative" style="<?php echo $section_style ?>">
   <div class="relative <?php echo $section_padding_top . ' ' . $section_padding_bottom ?>">
     <div class="py-6 lg:py-0">
-      <?php if ($logo_gallery) : ?>
+      <?php if ($stores->have_posts()) : ?>
         <?php
         $carousel_id = uniqid('carousel-');
         $carousel_loop = 'true';
@@ -28,24 +38,25 @@ $size = 'full';
       }
     ';
         ?>
-        <div id="<?php echo $carousel_id ?>" class="swiper px-8">
+        <div id="<?php echo $carousel_id ?>" class="swiper px-8" style="--swiper-navigation-color: #fff; --swiper-navigation-size: 24px">
           <div class="swiper-wrapper">
-            <?php foreach ($logo_gallery as $logo) : ?>
-              <div class="swiper-slide">
-                <div class="flex flex-col items-center justify-center">
-                  <img src="<?php echo esc_url($logo['sizes']['medium']); ?>" alt="<?php echo esc_attr($logo['alt']); ?>" class="">
+            <?php while ($stores->have_posts()) : $stores->the_post(); ?>
+              <?php
+              $id = get_the_ID();
+              $store_logo_white = get_field('store_logo_white', $id);
+              //preint_r($id);
+              if ($store_logo_white) :
+              ?>
+                <div class="swiper-slide">
+                  <div class="flex flex-col items-center justify-center">
+                    <img src="<?php echo esc_url($store_logo_white['sizes']['medium']); ?>" alt="<?php echo esc_attr($store_logo_white['alt']); ?>" class="">
+                  </div>
                 </div>
-              </div>
-            <?php endforeach; ?>
+              <?php endif; ?>
+            <?php endwhile; ?>
           </div>
-          <div class="flex items-center justify-center gap-x-4">
-            <button type="button" class="<?php echo $carousel_id ?>--button-prev button-prev w-10 h-10 flex items-center justify-center rounded-full shadow-md cursor-pointer hover:bg-white text-white hover:text-gray-500 transition-all duration-200 my-6">
-              <?php echo smc_icon(array('icon' => 'chevron', 'group' => 'utilities', 'size' => '16', 'class' => 'rotate-180')); ?>
-            </button>
-            <button type="button" class="<?php echo $carousel_id ?>--button-next button-next w-10 h-10 flex items-center justify-center rounded-full shadow-md cursor-pointer hover:bg-white text-white hover:text-gray-500 transition-all duration-200 my-6">
-              <?php echo smc_icon(array('icon' => 'chevron', 'group' => 'utilities', 'size' => '16', 'class' => '')); ?>
-            </button>
-          </div>
+          <div class="<?php echo $carousel_id ?>--button-prev swiper-button-next"></div>
+          <div class="<?php echo $carousel_id ?>--button-next swiper-button-prev"></div>
         </div>
         <?php
         echo '<script>';
@@ -70,8 +81,8 @@ $size = 'full';
       nextEl: ".' . $carousel_id . '--button-next",
       prevEl: ".' . $carousel_id . '--button-prev",
     },';
-        // echo 'loop: ' . $carousel_loop . ',';
-        // echo $carousel_autoplay_setting;
+        echo 'loop: ' . $carousel_loop . ',';
+        echo $carousel_autoplay_setting;
         echo '});';
         echo '</script>';
         ?>

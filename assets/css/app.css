@@ -3769,6 +3769,9 @@ details.collapse summary::-webkit-details-marker {
   bottom: 0;
   left: 0;
 }
+.aspect-h-9 {
+  --tw-aspect-h: 9;
+}
 .visible {
   visibility: visible;
 }
@@ -4049,6 +4052,9 @@ details.collapse summary::-webkit-details-marker {
 }
 .max-w-sm {
   max-width: 24rem;
+}
+.max-w-screen-lg {
+  max-width: 1024px;
 }
 .flex-none {
   flex: none;
@@ -4360,6 +4366,18 @@ details.collapse summary::-webkit-details-marker {
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
+}
+.object-bottom {
+  -o-object-position: bottom;
+     object-position: bottom;
+}
+.object-center {
+  -o-object-position: center;
+     object-position: center;
+}
+.object-top {
+  -o-object-position: top;
+     object-position: top;
 }
 .p-2 {
   padding: 0.5rem;
@@ -5610,6 +5628,10 @@ html {
          column-gap: 3.5rem;
   }
 
+  .xl\:rounded-xl {
+    border-radius: 0.75rem;
+  }
+
   .xl\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -5696,6 +5718,14 @@ html {
 
   .\32xl\:h-\[412px\] {
     height: 412px;
+  }
+
+  .\32xl\:h-\[512px\] {
+    height: 512px;
+  }
+
+  .\32xl\:h-\[312px\] {
+    height: 312px;
   }
 
   .\32xl\:w-5 {
