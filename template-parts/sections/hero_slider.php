@@ -9,6 +9,8 @@ include get_template_directory() . '/template-parts/layouts/section_settings.php
 */
 
 $hero_slider = get_sub_field('hero_slider');
+$info_box = get_sub_field('info_box');
+$show_info_box = $info_box['show_info_box'];
 
 if ($hero_slider) : ?>
   <section class="relative bg-white">
@@ -88,33 +90,64 @@ if ($hero_slider) : ?>
       });
     </script>
   </section>
-  <section class="relative z-20">
-    <div class="container max-w-screen-xl mx-auto -translate-y-3/4">
-      <div class="bg-blue-600 rounded-lg shadow-[0_6px_6px_rgba(0,0,0,0.16)] text-lg text-white">
-        <div class="flex divide-x divide-white/20 py-8 px-2">
-          <div class="flex gap-x-5 text-white px-8 py-4">
-            <div class="flex-none"><?php echo smc_icon(array('icon' => 'line-clock', 'group' => 'utilities', 'size' => '56', 'class' => '')); ?></div>
-            <div class="pt-1">
-              <div class="font-bold">Open from 9am – 5.30pm today</div>
-              <div><a href="#" class="underline">View Opening Hours</a></div>
-            </div>
-          </div>
-          <div class="flex gap-x-5 text-white px-8 py-4">
-            <div class="flex-none"><?php echo smc_icon(array('icon' => 'line-map', 'group' => 'utilities', 'size' => '56', 'class' => '')); ?></div>
-            <div class="pt-1">
-              <div class="font-bold">111 Cecil Street, South Melbourne</div>
-              <div><a href="#" class="underline">View Location & Parking</a></div>
-            </div>
-          </div>
-          <div class="flex gap-x-5 text-white px-8 py-4">
-            <div class="flex-none"><?php echo smc_icon(array('icon' => 'line-contact', 'group' => 'utilities', 'size' => '56', 'class' => '')); ?></div>
-            <div class="pt-1">
-              <div class="font-bold">Get in touch</div>
-              <div><a href="#" class="underline">View Contact Options</a></div>
+  <?php
+  if ($show_info_box) :
+
+    $info_boxes = $info_box['info_boxes'];
+    $opening_hours = $info_boxes['opening_hours'];
+    $address = $info_boxes['address'];
+    $contact = $info_boxes['contact'];
+    $color_settings = $info_box['color_settings'];
+    $info_box_style = '';
+    if ($color_settings['background_color']) {
+      $info_box_style .= 'background-color: ' . $color_settings['background_color'] . ';';
+    }
+    if ($color_settings['text_color']) {
+      $info_box_style .= 'color: ' . $color_settings['text_color'] . ';';
+    }
+  ?>
+    <section class="relative z-20">
+      <div class="container max-w-screen-xl mx-auto -translate-y-3/4">
+        <div class="bg-gray-700 rounded-lg shadow-[0_6px_6px_rgba(0,0,0,0.16)] text-lg text-white" style="<?php echo $info_box_style ?>">
+          <div class="flex divide-x divide-white/20 py-8 px-2">
+            <?php if ($opening_hours['title']) : ?>
+              <div class="flex gap-x-5 text-white px-8 py-4">
+                <div class="flex-none"><?php echo smc_icon(array('icon' => 'line-clock', 'group' => 'utilities', 'size' => '56', 'class' => '')); ?></div>
+                <div class="pt-1">
+                  <div class="font-bold"><?php echo $opening_hours['title'] ?></div>
+                  <?php if ($opening_hours['link']) : ?>
+                    <div><a href="<?php echo $opening_hours['link']['url'] ?>" class="underline hover:no-underline"><?php echo $opening_hours['link']['title'] ?></a></div>
+                  <?php endif; ?>
+                </div>
+              </div>
+            <?php endif; ?>
+
+            <?php if ($address['title']) : ?>
+              <div class="flex gap-x-5 text-white px-8 py-4">
+                <div class="flex-none"><?php echo smc_icon(array('icon' => 'line-map', 'group' => 'utilities', 'size' => '56', 'class' => '')); ?></div>
+                <div class="pt-1">
+                  <div class="font-bold"><?php echo $address['title'] ?></div>
+                  <?php if ($address['link']) : ?>
+                    <div><a href="<?php echo $address['link']['url'] ?>" class="underline hover:no-underline"><?php echo $address['link']['title'] ?></a></div>
+                  <?php endif; ?>
+                </div>
+              </div>
+            <?php endif; ?>
+
+            <?php if ($contact['title']) : ?>
+            <?php endif; ?>
+            <div class="flex gap-x-5 text-white px-8 py-4">
+              <div class="flex-none"><?php echo smc_icon(array('icon' => 'line-contact', 'group' => 'utilities', 'size' => '56', 'class' => '')); ?></div>
+              <div class="pt-1">
+                <div class="font-bold"><?php echo $contact['title'] ?></div>
+                <?php if ($contact['link']) : ?>
+                  <div><a href="<?php echo $contact['link']['url'] ?>" class="underline hover:no-underline"><?php echo $contact['link']['title'] ?></a></div>
+                <?php endif; ?>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  <?php endif; ?>
 <?php endif; ?>

@@ -8,6 +8,14 @@ include get_template_directory() . '/template-parts/layouts/section_settings.php
  * $section_padding_bottom
 */
 
+$location = get_sub_field('location');
+$title = $location['title'];
+$address = $location['address'];
+$how_to = $location['how_to'];
+$how_to_heading = $how_to['heading'];
+$how_to_accordion = $how_to['accordion'];
+$how_to_more_information = $how_to['more_information'];
+
 ?>
 
 <section id="<?php echo $section_id ?>" class="" style="<?php echo $section_style ?>">
@@ -15,53 +23,46 @@ include get_template_directory() . '/template-parts/layouts/section_settings.php
 
     <div class="container max-w-screen-xl">
       <div class="w-2/3">
-        <h2 class="h3 font-bold mb-8 mt-8">Our Location</h2>
-        <div class="flex gap-x-4 items-center">
-          <div class="float-none">
-            <?php echo smc_icon(array('icon' => 'line-map', 'group' => 'utilities', 'size' => '40', 'class' => '')); ?>
-          </div>
-          <span class="font-medium text-2xl">111 Cecil Street, South Melbourne, VIC 3205</span>
-        </div>
-
-        <h3 class="text-2xl font-medium mt-16 mb-8">How to get to South Melbourne Central</h3>
-        <div class="grid grid-cols-1 gap-y-4 mb-12">
-          <div class="collapse collapse-plus scroll-mt-32 shadow-[0_3px_6px_rgba(0,0,0,0.16)]">
-            <input type="checkbox" />
-            <div class="collapse-title text-xl md:text-2xl font-bold py-6 px-6">
-              Travelling by Car
+        <?php if ($title) : ?>
+          <h2 class="h3 font-bold mb-8 mt-8"><?php echo $title ?></h2>
+        <?php endif; ?>
+        <?php if ($address) : ?>
+          <div class="flex gap-x-4 items-center">
+            <div class="float-none">
+              <?php echo smc_icon(array('icon' => 'line-map', 'group' => 'utilities', 'size' => '40', 'class' => '')); ?>
             </div>
-            <div class="collapse-content px-0">
-              <div class="prose prose-lg max-w-none px-6 pt-0">
-                Sed magna purus, fermentum eu, tincidunt eu, varius ut, felis. Pellentesque posuere. Nullam sagittis. Suspendisse non nisl sit amet velit hendrerit rutrum. Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula.
+            <span class="font-medium text-2xl"><?php echo $address ?></span>
+          </div>
+        <?php endif; ?>
+        <?php if ($how_to_heading) : ?>
+          <h3 class="text-2xl font-medium mt-16 mb-8"><?php echo $how_to_heading ?></h3>
+        <?php endif; ?>
+        <?php if ($how_to_accordion) : ?>
+          <div class="grid grid-cols-1 gap-y-4 mb-12">
+            <?php foreach ($how_to_accordion as $info) : ?>
+              <div class="collapse collapse-plus shadow-[0_3px_6px_rgba(0,0,0,0.16)]">
+                <input type="checkbox" />
+                <div class="collapse-title text-xl md:text-2xl font-bold py-6 px-6">
+                  <?php if ($info['title']) : ?>
+                    <?php echo $info['title'] ?>
+                  <?php endif; ?>
+                </div>
+                <div class="collapse-content px-0">
+                  <?php if ($info['content']) : ?>
+                    <div class="prose prose-lg max-w-none px-6 pt-0">
+                      <?php echo $info['content'] ?>
+                    </div>
+                  <?php endif; ?>
+                </div>
               </div>
-            </div>
+            <?php endforeach; ?>
           </div>
-          <div class="collapse collapse-plus scroll-mt-32 shadow-[0_3px_6px_rgba(0,0,0,0.16)]">
-            <input type="checkbox" />
-            <div class="collapse-title text-xl md:text-2xl font-bold py-6 px-6">
-              Travelling by Tram
-            </div>
-            <div class="collapse-content px-0">
-              <div class="prose prose-lg max-w-none px-6 pt-0">
-                Sed magna purus, fermentum eu, tincidunt eu, varius ut, felis. Pellentesque posuere. Nullam sagittis. Suspendisse non nisl sit amet velit hendrerit rutrum. Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula.
-              </div>
-            </div>
+        <?php endif; ?>
+        <?php if ($how_to_more_information) : ?>
+          <div class="text-lg">
+            <?php echo $how_to_more_information ?>
           </div>
-          <div class="collapse collapse-plus scroll-mt-32 shadow-[0_3px_6px_rgba(0,0,0,0.16)]">
-            <input type="checkbox" />
-            <div class="collapse-title text-xl md:text-2xl font-bold py-6 px-6">
-              Travelling by Bus
-            </div>
-            <div class="collapse-content px-0">
-              <div class="prose prose-lg max-w-none px-6 pt-0">
-                Sed magna purus, fermentum eu, tincidunt eu, varius ut, felis. Pellentesque posuere. Nullam sagittis. Suspendisse non nisl sit amet velit hendrerit rutrum. Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula.
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="text-lg">
-          For more information about all public transport services, including routes and timetables visit Public Transport Victoria.
-        </div>
+        <?php endif; ?>
       </div>
     </div>
 
