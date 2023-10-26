@@ -38,23 +38,23 @@ if ($hero_slider) : ?>
                 <img src="<?php echo $slide_image['url'] ?>" alt="<?php echo $slide_image['alt'] ?>" class="object-cover h-full w-full opacity-100">
               </div>
             <?php endif; ?>
-            <div class="container max-w-screen-xl relative z-10 pt-[180px] pb-10 h-full">
+            <div class="container max-w-screen-xl relative z-10 pt-0 lg:pt-[180px] px-10 lg:px-8 pb-10 h-full">
               <div class="flex h-full items-center text-white">
                 <div>
                   <?php if ($headline) : ?>
-                    <div class="pt-16 pb-10 lg:pt-20 lg:pb-8 relative">
+                    <div class="pt-8 pb-8 lg:pt-20 lg:pb-8 relative">
                       <div class="w-full xl:w-3/5">
                         <?php if ($pre_headline) : ?>
-                          <h4 class="border-b border-white inline-block pb-2 mb-8 text-[22px] font-normal"><?php echo $pre_headline ?></h4>
+                          <h4 class="border-b border-white inline-block pb-2 mb-6 lg:mb-8 text-[20px] lg:text-[22px] leading-snug font-normal"><?php echo $pre_headline ?></h4>
                         <?php endif; ?>
-                        <h2 class="hero-headline text-[64px] font-bold"><?php echo $headline; ?></h2>
+                        <h2 class="hero-headline text-5xl lg:text-[64px] lg:leading-tight font-bold"><?php echo $headline; ?></h2>
                       </div>
                     </div>
                   <?php endif; ?>
                   <div class="flex flex-col lg:flex-row lg:gap-x-8 xl:gap-x-14">
                     <?php if ($description) : ?>
                       <div class="w-full lg:w-1/2">
-                        <div class="hero-description text-2xl">
+                        <div class="hero-description text-xl lg:text-2xl">
                           <?php echo $description; ?>
                         </div>
                       </div>
@@ -71,8 +71,8 @@ if ($hero_slider) : ?>
           </div>
         <?php endforeach; ?>
       </div>
-      <div class="swiper-button-prev after:content-['prev'] after:text-3xl text-white font-bold"></div>
-      <div class="swiper-button-next after:content-['next'] after:text-3xl text-white font-bold"></div>
+      <div class="swiper-button-prev left-0 lg:left-4 after:content-['prev'] after:text-lg after:lg:text-3xl text-white font-bold"></div>
+      <div class="swiper-button-next right-0 lg:right-4 after:content-['next'] after:text-lg after:lg:text-3xl text-white font-bold"></div>
     </div>
     <script>
       const swiper = new Swiper('#hero-slider', {
@@ -107,44 +107,44 @@ if ($hero_slider) : ?>
     }
   ?>
     <section class="relative z-20">
-      <div class="container max-w-screen-xl mx-auto -translate-y-3/4">
+      <div class="container max-w-screen-xl mx-auto -mt-48 lg:-mt-24">
         <div class="bg-gray-700 rounded-lg shadow-[0_6px_6px_rgba(0,0,0,0.16)] text-lg text-white" style="<?php echo $info_box_style ?>">
-          <div class="flex divide-x divide-white/20 py-8 px-2">
+          <div class="flex flex-col lg:flex-row divide-y lg:divide-x lg:divide-y-0 divide-white/20 py-0 lg:py-8 lg:px-2">
             <?php if ($opening_hours['title']) : ?>
-              <div class="flex gap-x-5 text-white px-8 py-4">
-                <div class="flex-none"><?php echo smc_icon(array('icon' => 'line-clock', 'group' => 'utilities', 'size' => '56', 'class' => '')); ?></div>
+              <div class="flex gap-x-5 text-white px-4 lg:px-8 py-4">
+                <div class="flex-none pt-2 lg:pt-0"><?php echo smc_icon(array('icon' => 'line-clock', 'group' => 'utilities', 'size' => '56', 'class' => 'w-10 h-10 lg:w-14 lg:h-14')); ?></div>
                 <div class="pt-1">
                   <div class="font-bold"><?php echo $opening_hours['title'] ?></div>
                   <?php if ($opening_hours['link']) : ?>
-                    <div><a href="<?php echo $opening_hours['link']['url'] ?>" class="underline hover:no-underline"><?php echo $opening_hours['link']['title'] ?></a></div>
+                    <div class="mt-1"><a href="<?php echo $opening_hours['link']['url'] ?>" class="underline hover:no-underline"><?php echo $opening_hours['link']['title'] ?></a></div>
                   <?php endif; ?>
                 </div>
               </div>
             <?php endif; ?>
 
             <?php if ($address['title']) : ?>
-              <div class="flex gap-x-5 text-white px-8 py-4">
-                <div class="flex-none"><?php echo smc_icon(array('icon' => 'line-map', 'group' => 'utilities', 'size' => '56', 'class' => '')); ?></div>
+              <div class="flex gap-x-5 text-white px-4 lg:px-8 py-4">
+                <div class="flex-none pt-2 lg:pt-0"><?php echo smc_icon(array('icon' => 'line-map', 'group' => 'utilities', 'size' => '56', 'class' => 'w-10 h-10 lg:w-14 lg:h-14')); ?></div>
                 <div class="pt-1">
                   <div class="font-bold"><?php echo $address['title'] ?></div>
                   <?php if ($address['link']) : ?>
-                    <div><a href="<?php echo $address['link']['url'] ?>" class="underline hover:no-underline"><?php echo $address['link']['title'] ?></a></div>
+                    <div class="mt-1"><a href="<?php echo $address['link']['url'] ?>" class="underline hover:no-underline"><?php echo $address['link']['title'] ?></a></div>
                   <?php endif; ?>
                 </div>
               </div>
             <?php endif; ?>
 
             <?php if ($contact['title']) : ?>
-            <?php endif; ?>
-            <div class="flex gap-x-5 text-white px-8 py-4">
-              <div class="flex-none"><?php echo smc_icon(array('icon' => 'line-contact', 'group' => 'utilities', 'size' => '56', 'class' => '')); ?></div>
-              <div class="pt-1">
-                <div class="font-bold"><?php echo $contact['title'] ?></div>
-                <?php if ($contact['link']) : ?>
-                  <div><a href="<?php echo $contact['link']['url'] ?>" class="underline hover:no-underline"><?php echo $contact['link']['title'] ?></a></div>
-                <?php endif; ?>
+              <div class="flex gap-x-5 text-white px-4 lg:px-8 py-4">
+                <div class="flex-none pt-2 lg:pt-0"><?php echo smc_icon(array('icon' => 'line-contact', 'group' => 'utilities', 'size' => '56', 'class' => 'w-10 h-10 lg:w-14 lg:h-14')); ?></div>
+                <div class="pt-1">
+                  <div class="font-bold"><?php echo $contact['title'] ?></div>
+                  <?php if ($contact['link']) : ?>
+                    <div class="mt-1"><a href="<?php echo $contact['link']['url'] ?>" class="underline hover:no-underline"><?php echo $contact['link']['title'] ?></a></div>
+                  <?php endif; ?>
+                </div>
               </div>
-            </div>
+            <?php endif; ?>
           </div>
         </div>
       </div>

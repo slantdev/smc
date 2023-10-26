@@ -19,7 +19,7 @@
   $top_nav_social_links = $top_navigation['social_links'];
   if ($top_nav_social_links) :
   ?>
-    <div id="top-nav" style="<?php echo $top_nav_style ?>">
+    <div id="top-nav" class="hidden md:block" style="<?php echo $top_nav_style ?>">
       <div class="top-nav--container max-w-screen-4xl mx-auto px-4 py-2 md:px-6 xl:px-8">
         <div class="hidden lg:flex justify-end">
           <ul class="top-nav--ul flex gap-x-4">
@@ -58,11 +58,11 @@
     <div class="max-w-screen-4xl mx-auto px-4 md:px-6 xl:px-8">
       <div class="flex justify-between items-center gap-x-4">
         <?php if ($main_nav_site_logo['logo_white']) : ?>
-          <a id="logo" href="<?php echo get_site_url() ?>" class="inline-block relative z-50 pb-3">
-            <img src="<?php echo $main_nav_site_logo['logo_white']['url'] ?>" alt="<?php echo get_bloginfo('name') ?>" class="h-6 lg:h-[38px] 2xl:h-11 w-auto max-w-none">
+          <a id="logo" href="<?php echo get_site_url() ?>" class="block relative z-50 lg:pb-3">
+            <img src="<?php echo $main_nav_site_logo['logo_white']['url'] ?>" alt="<?php echo get_bloginfo('name') ?>" class="h-7 lg:h-[38px] 2xl:h-11 w-auto max-w-none">
           </a>
         <?php else : ?>
-          <a id="logo" href="<?php echo get_site_url() ?>" class="inline-block relative z-50">
+          <a id="logo" href="<?php echo get_site_url() ?>" class="block relative z-50">
             <?php echo get_bloginfo('name') ?>
           </a>
         <?php endif; ?>

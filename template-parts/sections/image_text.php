@@ -28,16 +28,16 @@ if ($image_position == 'right') {
 
 <section id="<?php echo $section_id ?>" style="<?php echo $section_style ?>">
   <div class="relative container max-w-screen-xl mx-auto <?php echo $section_padding_top . ' ' . $section_padding_bottom ?>">
-    <div class="flex flex-col gap-y-8 lg:gap-y-0 lg:gap-x-16 lg:flex-row lg:flex-nowrap">
+    <div class="flex flex-col gap-y-6 lg:gap-y-0 lg:gap-x-16 lg:flex-row lg:flex-nowrap">
       <div class="<?php echo $column_text_class ?>">
         <?php if ($heading) : ?>
-          <h2 class="h3 font-bold mb-8 mt-8"><?php echo $heading ?></h2>
+          <h2 class="text-3xl lg:text-4xl font-bold mb-6 lg:mb-8 lg:mt-8"><?php echo $heading ?></h2>
         <?php endif; ?>
         <?php if ($lead_text) : ?>
-          <div class="text-2xl font-medium mb-8 mt-8"><?php echo $lead_text ?></div>
+          <div class="text-xl lg:text-2xl font-medium my-6 lg:my-8"><?php echo $lead_text ?></div>
         <?php endif; ?>
         <?php if ($content) : ?>
-          <div class="prose xl:prose-lg">
+          <div class="prose lg:prose-lg">
             <?php echo $content ?>
           </div>
         <?php endif; ?>

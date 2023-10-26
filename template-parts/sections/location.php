@@ -22,20 +22,20 @@ $how_to_more_information = $how_to['more_information'];
   <div class="relative <?php echo $section_padding_top . ' ' . $section_padding_bottom ?>">
 
     <div class="container max-w-screen-xl">
-      <div class="w-2/3">
+      <div class="w-full lg:w-2/3">
         <?php if ($title) : ?>
-          <h2 class="h3 font-bold mb-8 mt-8"><?php echo $title ?></h2>
+          <h2 class="text-3xl lg:text-4xl font-bold mb-8 mt-8"><?php echo $title ?></h2>
         <?php endif; ?>
         <?php if ($address) : ?>
-          <div class="flex gap-x-4 items-center">
-            <div class="float-none">
-              <?php echo smc_icon(array('icon' => 'line-map', 'group' => 'utilities', 'size' => '40', 'class' => '')); ?>
+          <div class="flex gap-x-6 items-start lg:items-center">
+            <div class="float-none mt-2 lg:mt-0">
+              <?php echo smc_icon(array('icon' => 'line-map', 'group' => 'utilities', 'size' => '40', 'class' => 'w-8 h-8 lg:w-10 lg:h-10')); ?>
             </div>
-            <span class="font-medium text-2xl"><?php echo $address ?></span>
+            <span class="font-medium text-xl lg:text-2xl"><?php echo $address ?></span>
           </div>
         <?php endif; ?>
         <?php if ($how_to_heading) : ?>
-          <h3 class="text-2xl font-medium mt-16 mb-8"><?php echo $how_to_heading ?></h3>
+          <h3 class="text-xl lg:text-2xl font-medium mt-16 mb-8"><?php echo $how_to_heading ?></h3>
         <?php endif; ?>
         <?php if ($how_to_accordion) : ?>
           <div class="grid grid-cols-1 gap-y-4 mb-12">
@@ -49,7 +49,7 @@ $how_to_more_information = $how_to['more_information'];
                 </div>
                 <div class="collapse-content px-0">
                   <?php if ($info['content']) : ?>
-                    <div class="prose prose-lg max-w-none px-6 pt-0">
+                    <div class="prose lg:prose-lg max-w-none px-6 pt-0">
                       <?php echo $info['content'] ?>
                     </div>
                   <?php endif; ?>
@@ -59,7 +59,7 @@ $how_to_more_information = $how_to['more_information'];
           </div>
         <?php endif; ?>
         <?php if ($how_to_more_information) : ?>
-          <div class="text-lg">
+          <div class="text-base lg:text-lg">
             <?php echo $how_to_more_information ?>
           </div>
         <?php endif; ?>

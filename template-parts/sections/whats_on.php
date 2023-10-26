@@ -57,25 +57,25 @@ if (!$categories) {
 <section id="<?php echo $section_id ?>" style="<?php echo $section_style ?>">
   <div class="relative container max-w-screen-xl mx-auto <?php echo $section_padding_top . ' ' . $section_padding_bottom ?>">
     <?php if ($heading) : ?>
-      <div class="flex gap-x-6 mb-12">
-        <h2 class="flex-none text-4xl font-bold text-black"><?php echo $heading ?></h2>
+      <div class="flex gap-x-4 lg:gap-x-6 mb-8 lg:mb-12">
+        <h2 class="flex-none text-3xl lg:text-4xl font-bold text-black"><?php echo $heading ?></h2>
         <div class="border-b border-solid border-slate-400 w-full">&nbsp;</div>
       </div>
     <?php endif; ?>
     <?php if ($description) : ?>
-      <div class="flex gap-x-8 mb-8">
-        <div class="w-1/2 text-slate-600"><?php echo $description ?></div>
+      <div class="flex lg:gap-x-8 mb-8">
+        <div class="w-full lg:w-1/2 text-slate-600"><?php echo $description ?></div>
       </div>
     <?php endif; ?>
 
     <?php if ($whats_on->have_posts()) : ?>
       <?php if ($grid_style == 'banner') : ?>
-        <div class="grid grid-cols-1 gap-y-10">
+        <div class="grid grid-cols-1 gap-y-6 lg:gap-y-10">
           <?php while ($whats_on->have_posts()) : $whats_on->the_post(); ?>
             <?php
             $id = get_the_ID();
             ?>
-            <div class="rounded-xl overflow-hidden">
+            <div class="rounded-lg lg:rounded-xl overflow-hidden">
               <?php if (has_post_thumbnail($id)) : ?>
                 <?php echo get_the_post_thumbnail($id, 'full', array('class' => 'rounded-xl')); ?>
               <?php endif; ?>
@@ -83,7 +83,7 @@ if (!$categories) {
           <?php endwhile; ?>
         </div>
       <?php else : ?>
-        <div class="grid grid-cols-3 gap-x-10">
+        <div class="grid grid-cols-1 gap-y-8 lg:grid-cols-3 lg:gap-y-0 lg:gap-x-10">
           <?php while ($whats_on->have_posts()) : $whats_on->the_post(); ?>
             <?php
             $id = get_the_ID();
@@ -97,7 +97,7 @@ if (!$categories) {
                     </a>
                   <?php endif; ?>
                 </div>
-                <h3 class="text-3xl font-normal mb-4"><a href="<?php the_permalink() ?>" class="text-slate-600 hover:underline"><?php the_title() ?></a></h3>
+                <h3 class="text-2xl lg:text-3xl font-normal mb-4"><a href="<?php the_permalink() ?>" class="text-slate-600 hover:underline"><?php the_title() ?></a></h3>
                 <div class="text-slate-500 text-sm"><?php the_excerpt() ?></div>
                 <div class="mt-4">
                   <a href="<?php the_permalink() ?>" class="text-sm uppercase font-medium hover:underline" style="<?php echo $link_style; ?>">FIND OUT MORE</a>
@@ -110,7 +110,7 @@ if (!$categories) {
                     <?php echo get_the_post_thumbnail($id, 'full', array('class' => 'w-full h-full object-cover rounded-t-xl')); ?>
                   <?php endif; ?>
                 </div>
-                <div class="p-6 prose">
+                <div class="p-4 lg:p-6 prose">
                   <h3 class="text-xl font-bold mb-4"><?php the_title() ?></h3>
                   <div class="text-slate-700 text-base"><?php the_content() ?></div>
                 </div>

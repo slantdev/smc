@@ -117,11 +117,11 @@ function pagination_load_stores()
     $count = $count->post_count;
 
     if ($central_stores->have_posts()) :
-      echo '<div class="flex gap-x-6 mb-12">
-        <h2 class="flex-none text-4xl font-bold text-black">South Melbourne Central</h2>
-        <div class="border-b border-solid border-slate-400 w-full">&nbsp;</div>
+      echo '<div class="flex gap-x-4 lg:gap-x-6 mb-8 lg:mb-12">
+        <h2 class="md:flex-none text-3xl lg:text-4xl font-bold text-black">South Melbourne Central</h2>
+        <div class="hidden md:block border-b border-solid border-slate-400 w-full">&nbsp;</div>
       </div>';
-      echo '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">';
+      echo '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 lg:gap-8">';
       while ($central_stores->have_posts()) :
         $central_stores->the_post(); ?>
         <?php
@@ -163,11 +163,11 @@ function pagination_load_stores()
 
     if ($market_street_stores->have_posts()) :
       echo '<div class="mt-24"></div>';
-      echo '<div class="flex gap-x-6 mb-12">
-        <h2 class="flex-none text-4xl font-bold text-black">South Melbourne - Market Street</h2>
-        <div class="border-b border-solid border-slate-400 w-full">&nbsp;</div>
-      </div>';
-      echo '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">';
+      echo '<div class="flex gap-x-4 lg:gap-x-6 mb-8 lg:mb-12">
+      <h2 class="md:flex-none text-3xl lg:text-4xl font-bold text-black">South Melbourne - Market Street</h2>
+      <div class="hidden md:block border-b border-solid border-slate-400 w-full">&nbsp;</div>
+    </div>';
+      echo '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 lg:gap-8">';
       while ($market_street_stores->have_posts()) :
         $market_street_stores->the_post(); ?>
         <?php

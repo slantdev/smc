@@ -56,7 +56,7 @@ if ($enabled) :
       </div>
     <?php } ?>
     <div class="container max-w-screen-xl relative z-10 pt-52 lg:pt-[200px] 2xl:pt-[158px] h-full">
-      <div class="flex flex-col md:flex-row h-full items-center text-white py-24">
+      <div class="flex flex-col md:flex-row h-full items-center text-white py-16 lg:py-24">
         <div class="w-full lg:w-1/2">
           <h1 class="font-bold text-[40px] lg:text-[50px] leading-tight"><?php echo $hero_title ?></h1>
         </div>

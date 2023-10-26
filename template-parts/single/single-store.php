@@ -41,7 +41,7 @@ if ($location_terms) {
 }
 $store_gallery = get_field('store_gallery');
 ?>
-<section class="relative w-full 2xl:h-[512px] bg-black">
+<section class="relative w-full h-[200px] xl:h-[400px] 2xl:h-[512px] bg-black">
   <?php if ($store_page_banner) { ?>
     <div class="absolute inset-0 z-0">
       <img src="<?php echo $store_page_banner['url'] ?>" alt="<?php echo $store_page_banner['alt'] ?>" class="object-cover h-full w-full <?php echo $banner_class ?>">
@@ -49,10 +49,10 @@ $store_gallery = get_field('store_gallery');
   <?php } ?>
 </section>
 
-<section class="relative pt-20 pb-20">
+<section class="relative py-12 md:py-20">
   <div class="container max-w-screen-xl">
-    <div class="flex gap-x-20">
-      <div class="w-1/3">
+    <div class="flex flex-col gap-y-8 md:flex-row md:gap-y-0 md:gap-x-10 lg:gap-x-20">
+      <div class="w-full md:w-1/3">
         <?php
         if ($store_image) {
           echo '<div class="aspect-w-1 aspect-h-1">';
@@ -63,13 +63,13 @@ $store_gallery = get_field('store_gallery');
         }
         ?>
       </div>
-      <div class="w-2/3">
-        <h1 class="text-[45px] font-bold uppercase mb-8"><?php echo get_the_title() ?></h1>
+      <div class="w-full md:w-2/3">
+        <h1 class="text-4xl lg:text-[45px] font-bold uppercase mb-8"><?php echo get_the_title() ?></h1>
         <?php if ($description['lead_text'] || $description['description']) : ?>
-          <div class="mb-12">
+          <div class="mb-8 lg:mb-12">
             <?php
             if ($description['lead_text']) {
-              echo '<div class="font-medium text-2xl mb-6">' . $description['lead_text'] . '</div>';
+              echo '<div class="font-medium text-xl md:text-2xl mb-6">' . $description['lead_text'] . '</div>';
             }
             ?>
             <?php
@@ -108,20 +108,20 @@ $store_gallery = get_field('store_gallery');
           </div>
         <?php endif; ?>
         <?php if ($store_category || $store_location) : ?>
-          <div class="my-12 pt-12 border-t border-solid border-stone-300">
-            <div class="flex gap-x-12">
+          <div class="my-8 pt-8 md:my-12 md:pt-12 border-t border-solid border-stone-300">
+            <div class="flex flex-col md:flex-row gap-y-8 md:gap-y-0 gap-x-12">
               <?php if ($store_category) : ?>
-                <div class="w-1/2">
-                  <h3>Category</h3>
-                  <div class="mt-8 text-lg">
+                <div class="w-full md:w-1/2">
+                  <h3 class="text-3xl lg:text-4xl">Category</h3>
+                  <div class="mt-4 md:mt-8 text-lg">
                     <?php echo $store_category ?>
                   </div>
                 </div>
               <?php endif; ?>
               <?php if ($store_location) : ?>
-                <div class="w-1/2">
-                  <h3>Location</h3>
-                  <div class="mt-8 text-lg">
+                <div class="w-full md:w-1/2">
+                  <h3 class="text-3xl lg:text-4xl">Location</h3>
+                  <div class="mt-4 md:mt-8 text-lg">
                     <?php echo $store_location ?>
                   </div>
                 </div>
@@ -130,8 +130,8 @@ $store_gallery = get_field('store_gallery');
           </div>
         <?php endif; ?>
         <?php if ($operating_hours) : ?>
-          <div class="my-12 pt-12 border-t border-solid border-stone-300">
-            <h3>Store Trading Hours</h3>
+          <div class="my-8 pt-8 md:my-12 md:pt-12 border-t border-solid border-stone-300">
+            <h3 class="text-3xl lg:text-4xl">Store Trading Hours</h3>
             <div class="table text-lg mt-8">
               <?php foreach ($operating_hours as $hour) : ?>
                 <div class="table-row">
@@ -148,7 +148,7 @@ $store_gallery = get_field('store_gallery');
 </section>
 
 <?php if ($store_gallery) : ?>
-  <section class="relative pt-20 pb-20 bg-[#F4F4F2]">
+  <section class="relative py-12 md:py-20 bg-[#F4F4F2]">
     <div class="container max-w-screen-lg">
       <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff; --swiper-navigation-size: 20px" class="swiper gallerySwiper rounded-lg xl:rounded-xl">
         <div class="swiper-wrapper">

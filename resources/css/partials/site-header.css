@@ -18,21 +18,21 @@ html {
     @apply bg-black bg-opacity-95;
     #top-nav {
       .top-nav--container {
-        @apply py-1;
+        @apply lg:py-1;
       }
       .top-nav--ul {
-        @apply gap-x-2;
+        @apply lg:gap-x-2;
       }
       .svg-icon {
-        @apply h-[18px] w-[18px];
+        @apply lg:h-[18px] lg:w-[18px];
       }
     }
     #main-nav {
-      @apply py-0;
+      @apply lg:py-0;
       #logo {
-        @apply py-2;
+        @apply lg:py-2;
         img {
-          @apply h-9 w-auto;
+          @apply lg:h-9 lg:w-auto;
         }
       }
       .main-nav--div {
@@ -40,7 +40,7 @@ html {
       }
       .main-nav--ul {
         > li > a {
-          @apply py-5 leading-[36px];
+          @apply lg:py-5 lg:leading-[36px];
         }
       }
     }

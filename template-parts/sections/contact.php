@@ -25,36 +25,36 @@ $form_shortcode = $contact['form_shortcode'];
 
   <div class="relative container max-w-screen-xl mx-auto <?php echo $section_padding_top . ' ' . $section_padding_bottom ?>">
     <?php if ($title) : ?>
-      <div class="flex gap-x-6 mb-12">
-        <h2 class="flex-none text-4xl font-bold text-black"><?php echo $title ?></h2>
+      <div class="flex gap-x-4 lg:gap-x-6 mb-8 lg:mb-12">
+        <h2 class="flex-none text-3xl lg:text-4xl font-bold text-black"><?php echo $title ?></h2>
         <div class="border-b border-solid border-slate-400 w-full">&nbsp;</div>
       </div>
     <?php endif; ?>
     <div class="flex flex-col gap-y-8 lg:gap-y-0 lg:gap-x-16 lg:flex-row lg:flex-nowrap">
-      <div class="w-1/2">
+      <div class="w-full lg:w-1/2">
         <?php if ($lead_text) : ?>
-          <div class="text-2xl font-medium mb-8 mt-0">
+          <div class="text-xl lg:text-2xl font-medium mb-6 lg:mb-8 mt-0">
             <?php echo $lead_text ?>
           </div>
         <?php endif; ?>
         <?php if ($description) : ?>
-          <div class="prose xl:prose-lg">
+          <div class="prose lg:prose-lg">
             <?php echo $description ?>
           </div>
         <?php endif; ?>
         <?php if ($phone) : ?>
           <div class="mt-10 flex flex-col gap-6">
             <?php foreach ($phone as $info) : ?>
-              <div class="flex gap-x-6 items-center">
-                <div class="float-none">
-                  <?php echo smc_icon(array('icon' => 'line-phone', 'group' => 'utilities', 'size' => '40', 'class' => '')); ?>
+              <div class="flex gap-x-6 items-start">
+                <div class="float-none mt-2 lg:mt-1">
+                  <?php echo smc_icon(array('icon' => 'line-phone', 'group' => 'utilities', 'size' => '40', 'class' => 'w-8 h-8 lg:w-10 lg:h-10')); ?>
                 </div>
                 <div>
                   <?php if ($info['title']) : ?>
-                    <div class="font-bold text-xl"><?php echo $info['title'] ?></div>
+                    <div class="font-bold text-lg lg:text-xl leading-tight lg:leading-tight"><?php echo $info['title'] ?></div>
                   <?php endif; ?>
                   <?php if ($info['phone_number']) : ?>
-                    <div class="text-xl text-slate-600"><a href="<?php echo $info['phone_number']['url'] ?>" target="<?php echo $info['phone_number']['target'] ?>" class="text-xl text-slate-600 hover:underline"><?php echo $info['phone_number']['title'] ?></a></div>
+                    <div class="text-lg lg:text-xl"><a href="<?php echo $info['phone_number']['url'] ?>" target="<?php echo $info['phone_number']['target'] ?>" class="text-slate-600 hover:underline"><?php echo $info['phone_number']['title'] ?></a></div>
                   <?php endif; ?>
                 </div>
               </div>
@@ -62,7 +62,7 @@ $form_shortcode = $contact['form_shortcode'];
           </div>
         <?php endif; ?>
       </div>
-      <div class="w-1/2">
+      <div class="w-full lg:w-1/2">
         <?php if ($form_shortcode) : ?>
           <?php echo do_shortcode($form_shortcode) ?>
         <?php else : ?>

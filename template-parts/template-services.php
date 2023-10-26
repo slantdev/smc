@@ -16,18 +16,23 @@ get_header();
 get_template_part('template-parts/layouts/page-header', '', array('breadcrumbs' => false));
 ?>
 
-<section class="relative pt-24 pb-16">
+<section class="relative pt-16 pb-12 lg:pt-24 lg:pb-16">
   <div class="container max-w-screen-xl">
-    <div class="flex gap-x-3">
-      <div class="flex-none flex items-center">
-        <span class="text-4xl uppercase font-bold text-black">Categories</span>
+    <div class="flex flex-col gap-y-4 lg:gap-y-0 lg:flex-row lg:gap-x-3">
+      <div class="flex gap-x-3">
+        <div class="flex-none flex items-center">
+          <span class="text-3xl lg:text-4xl uppercase font-bold text-black">Categories</span>
+        </div>
+        <div class="border-b border-solid border-slate-500 w-full">&nbsp;</div>
       </div>
-      <div class="border-b border-solid border-slate-500 w-full">&nbsp;</div>
       <div class="flex-none">
-        <div class="rounded-full bg-[#F5F7F8] h-14 pl-3 pr-1 flex items-center border border-[#95A7B5] shadow-inner"><input type="text" class="w-60 h-12 bg-transparent border-none rounded-l-full focus:border-none focus:ring-0 focus:outline-none" placeholder="Insert your query"><button class="bg-primary text-white py-3 px-8 rounded-full">SEARCH</button></div>
+        <div class="rounded-full bg-[#F5F7F8] h-14 pl-3 pr-1 flex items-center border border-[#95A7B5] shadow-inner">
+          <input type="text" class="w-full lg:w-60 h-12 bg-transparent border-none rounded-l-full focus:border-none focus:ring-0 focus:outline-none" placeholder="Insert your query">
+          <button class="flex-none bg-primary text-white py-3 px-8 rounded-full">SEARCH</button>
+        </div>
       </div>
     </div>
-    <div class="mt-10">
+    <div class="mt-10 relative px-4 lg:px-0">
       <?php
       $terms = get_terms(array(
         'taxonomy'   => 'store-category',
@@ -44,20 +49,20 @@ get_template_part('template-parts/layouts/page-header', '', array('breadcrumbs' 
               $term_id = $term->term_id;
               $icon = get_field('svg_icon', $term->taxonomy . '_' . $term->term_id);
               ?>
-              <div class="swiper-slide w-[148px]"><button type="button" data-id="<?php echo $term_id ?>" data-slug="<?php echo $term->slug ?>" class="store-filter-button text-center flex flex-col items-center gap-y-3 mx-auto text-black hover:text-primary transition">
+              <div class="swiper-slide w-32 lg:w-[148px]"><button type="button" data-id="<?php echo $term_id ?>" data-slug="<?php echo $term->slug ?>" class="store-filter-button text-center flex flex-col items-center gap-y-3 mx-auto text-black hover:text-primary transition">
                   <?php
                   if ($icon) {
-                    echo smc_icon(array('icon_src' => $icon['id'], 'size' => '96', 'class' => 'w-24 h-24'));
+                    echo smc_icon(array('icon_src' => $icon['id'], 'size' => '96', 'class' => 'w-16 h-16 lg:w-24 lg:h-24'));
                   }
                   ?>
-                  <h5 class="text-base uppercase font-bold leading-tight"><?php echo $term->name ?></h5>
+                  <h5 class="text-sm lg:text-base uppercase font-bold leading-tight"><?php echo $term->name ?></h5>
                 </button></div>
             <?php endforeach; ?>
           </div>
-          <div>
-            <div class="store-categories--button-prev swiper-button-prev"></div>
-            <div class="store-categories--button-next swiper-button-next"></div>
-          </div>
+        </div>
+        <div>
+          <div class="store-categories--button-prev swiper-button-prev -left-4 lg:left-2 after:content-['prev'] after:text-2xl after:lg:text-[40px]"></div>
+          <div class="store-categories--button-next swiper-button-next -right-4 lg:right-2 after:content-['next'] after:text-2xl after:lg:text-[40px]"></div>
         </div>
         <script>
           new Swiper('#store-categories', {
@@ -76,15 +81,14 @@ get_template_part('template-parts/layouts/page-header', '', array('breadcrumbs' 
     </div>
   </div>
 </section>
-<section class="relative bg-[#F4F4F2] pt-16 pb-24">
+<section class="relative bg-[#F4F4F2] pt-24 pb-24">
   <div class="container max-w-screen-xl">
-    <div class="mt-12">
+    <div class="mt-0">
       <div class="stores-container relative scroll-mt-36">
         <div class="stores-grid"></div>
         <div class="blocker absolute inset-0 bg-white bg-opacity-40" style="display: none;"></div>
       </div>
     </div>
-
     <script type="text/javascript">
       jQuery(document).ready(function($) {
         var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
