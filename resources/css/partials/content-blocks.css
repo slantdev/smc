@@ -29,3 +29,29 @@
 .swiper-button-lock {
   @apply hidden;
 }
+
+.subscribe-form {
+  .with_frm_style input[type='text'],
+  .with_frm_style input[type='password'],
+  .with_frm_style input[type='email'],
+  .with_frm_style input[type='number'],
+  .with_frm_style input[type='url'],
+  .with_frm_style input[type='tel'],
+  .with_frm_style input[type='file'],
+  .with_frm_style input[type='search'],
+  .with_frm_style select,
+  .with_frm_style .frm-card-element.StripeElement {
+    @apply rounded-full;
+  }
+  .frm_style_formidable-style.with_frm_style
+    .frm_compact
+    .frm_dropzone.dz-clickable
+    .dz-message,
+  .frm_style_formidable-style.with_frm_style input[type='submit'],
+  .frm_style_formidable-style.with_frm_style .frm_submit input[type='button'],
+  .frm_style_formidable-style.with_frm_style .frm_submit button,
+  .frm_form_submit_style,
+  .frm_style_formidable-style.with_frm_style .frm-edit-page-btn {
+    @apply shadow-none rounded-full bg-gray-800 hover:bg-black transition;
+  }
+}

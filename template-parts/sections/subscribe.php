@@ -33,15 +33,21 @@ $form_shortcode = $subscribe['form_shortcode'];
         </div>
       </div>
       <div class="w-full lg:w-1/2">
-        <div class="flex flex-col gap-8 w-full">
-          <div class="flex gap-4">
-            <input type="text" class="bg-white rounded-full border-none w-full" placeholder="First name*">
-            <input type="text" class="bg-white rounded-full border-none w-full" placeholder="Last name*">
-          </div>
-          <div><input type="text" class="bg-white rounded-full border-none w-full" placeholder="Email*"></div>
-          <div>
-            <button type="button" class="bg-black py-3 px-12 rounded-full font-bold text-white hover:bg-opacity-60">Subscribe</button>
-          </div>
+        <div class="subscribe-form">
+          <?php if ($form_shortcode) : ?>
+            <?php echo do_shortcode($form_shortcode) ?>
+          <?php else : ?>
+            <div class="flex flex-col gap-8 w-full">
+              <div class="flex gap-4">
+                <input type="text" class="bg-white rounded-full border-none w-full" placeholder="First name*">
+                <input type="text" class="bg-white rounded-full border-none w-full" placeholder="Last name*">
+              </div>
+              <div><input type="text" class="bg-white rounded-full border-none w-full" placeholder="Email*"></div>
+              <div>
+                <button type="button" class="bg-black py-3 px-12 rounded-full font-bold text-white hover:bg-opacity-60">Subscribe</button>
+              </div>
+            </div>
+          <?php endif; ?>
         </div>
       </div>
     </div>
