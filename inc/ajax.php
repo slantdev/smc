@@ -517,3 +517,202 @@ function filter_stores()
 
   exit;
 }
+
+add_action('wp_ajax_search_stores', 'search_stores');
+add_action('wp_ajax_nopriv_search_stores', 'search_stores');
+function search_stores()
+{
+  $search_query = $_POST['search'];
+
+  // if ($search_query) {
+  //   if ($category_filter == 'all') {
+  //     $args = array(
+  //       'post_type' => 'store',
+  //       'posts_per_page' => $postsPerPage,
+  //       'orderby' => 'menu_order',
+  //       'order' => 'ASC',
+  //       's' => $search_query,
+  //       'post_status' => 'publish',
+  //     );
+  //   } else {
+  //     $args = array(
+  //       'post_type' => 'store',
+  //       'posts_per_page' => $postsPerPage,
+  //       'orderby' => 'menu_order',
+  //       'order' => 'ASC',
+  //       's' => $search_query,
+  //       'post_status' => 'publish',
+  //       'tax_query' => array(
+  //         array(
+  //           'taxonomy' => 'store-category',
+  //           'field'    => 'term_id',
+  //           'terms'    => $category_filter,
+  //         ),
+  //       ),
+  //     );
+  //   }
+  // } else {
+  //   if ($category_filter == 'all') {
+  //     $args = array(
+  //       'post_type' => 'store',
+  //       'posts_per_page' => $postsPerPage,
+  //       'orderby' => 'menu_order',
+  //       'order' => 'ASC',
+  //       'post_status' => 'publish',
+  //     );
+  //   } else {
+  //     $args = array(
+  //       'post_type' => 'store',
+  //       'posts_per_page' => $postsPerPage,
+  //       'orderby' => 'menu_order',
+  //       'order' => 'ASC',
+  //       'post_status' => 'publish',
+  //       'tax_query' => array(
+  //         array(
+  //           'taxonomy' => 'store-category',
+  //           'field'    => 'term_id',
+  //           'terms'    => $category_filter,
+  //         ),
+  //       ),
+  //     );
+  //   }
+  // }
+
+  $central_stores = new WP_Query(
+    array(
+      'post_type' => 'store',
+      'posts_per_page' => -1,
+      'orderby' => 'menu_order',
+      'order' => 'ASC',
+      'post_status' => 'publish',
+      's' => $search_query,
+    )
+  );
+
+  $response = '';
+
+  if ($central_stores->have_posts()) {
+
+    $response .= '<div class="flex gap-x-6 mb-12">
+        <h2 class="flex-none text-4xl font-bold text-black">South Melbourne Central</h2>
+        <div class="border-b border-solid border-slate-400 w-full">&nbsp;</div>
+      </div>';
+
+    $response .= '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">';
+
+    while ($central_stores->have_posts()) : $central_stores->the_post();
+
+      $id = get_the_ID();
+      $img_src = get_the_post_thumbnail_url($id, 'large');
+      $title =  get_the_title();
+      $link = get_the_permalink();
+      $location = get_the_terms($id, 'store-location')[0]->name;
+      $phone = get_field('contact_info', $id)['phone'];
+
+      $response .= '<a href="' . $link . '" class="border border-[#CECECE] bg-white rounded-2xl overflow-hidden shadow-[0_3px_6px_rgba(0,0,0,0.16)] flex flex-col p-8 hover:-translate-y-1 hover:shadow-[0_3px_12px_rgba(0,0,0,0.24)] transition-all duration-500 ease-in-out">
+                <div class="aspect-w-6 aspect-h-4">
+                  <img src="' . $img_src . '" alt="" class="object-contain h-full w-full">
+                </div>
+                <div class="flex flex-col grow border-t border-slate-300">
+                  <h3 class="text-xl font-bold py-6 text-black">' . $title . '</h3>
+                  <div class="mt-auto flex flex-col gap-2">';
+      if ($location) {
+        $response .= '<div class="flex gap-x-4">
+                        <div class="flex-none">' . smc_icon(array('icon' => 'line-marker', 'group' => 'utilities', 'size' => '24', 'class' => 'text-black')) . '</div>
+                        <div>Located on <span class="uppercase">' . $location . '</span></div>
+                      </div>';
+      }
+      if ($phone) {
+        $response .= '<div class="flex gap-x-4">
+                        <div class="flex-none">' . smc_icon(array('icon' => 'line-phone', 'group' => 'utilities', 'size' => '24', 'class' => 'text-black')) . '</div>
+                        <div>' . $phone . '</div>
+                      </div>';
+      }
+      $response .= '</div>
+                </div>
+              </a>';
+
+    endwhile;
+
+    $response .= '</div>';
+
+    $response .= '<div class="mt-24"></div>';
+    //$response .= '<div class="blocker absolute inset-0 bg-white bg-opacity-40" style="display: none;"></div>';
+  } else {
+    //$response = '<div class="text-center py-4 px-8">No Store Found</div>';
+  }
+
+  //echo $response;
+
+  //wp_reset_postdata();
+
+  $market_street_stores = new WP_Query(
+    array(
+      'post_type' => 'store',
+      'posts_per_page' => -1,
+      'orderby' => 'menu_order',
+      'order' => 'ASC',
+      'post_status' => 'publish',
+      's' => $search_query,
+    )
+  );
+
+  if ($market_street_stores->have_posts()) {
+    $response .= '<div class="mt-24"></div>';
+    $response .= '<div class="flex gap-x-6 mb-12">
+        <h2 class="flex-none text-4xl font-bold text-black">South Melbourne - Market Street</h2>
+        <div class="border-b border-solid border-slate-400 w-full">&nbsp;</div>
+      </div>';
+
+    $response .= '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">';
+
+    while ($market_street_stores->have_posts()) : $market_street_stores->the_post();
+
+      $id = get_the_ID();
+      $img_src = get_the_post_thumbnail_url($id, 'large');
+      $title =  get_the_title();
+      $link = get_the_permalink();
+      $location = get_the_terms($id, 'store-location')[0]->name;
+      $phone = get_field('contact_info', $id)['phone'];
+
+      $response .= '<a href="' . $link . '" class="border border-[#CECECE] bg-white rounded-2xl overflow-hidden shadow-[0_3px_6px_rgba(0,0,0,0.16)] flex flex-col p-8 hover:-translate-y-1 hover:shadow-[0_3px_12px_rgba(0,0,0,0.24)] transition-all duration-500 ease-in-out">
+                <div class="aspect-w-6 aspect-h-4">
+                  <img src="' . $img_src . '" alt="" class="object-contain h-full w-full">
+                </div>
+                <div class="flex flex-col grow border-t border-slate-300">
+                  <h3 class="text-xl font-bold py-6 text-black">' . $title . '</h3>
+                  <div class="mt-auto flex flex-col gap-2">';
+      if ($location) {
+        $response .= '<div class="flex gap-x-4">
+                        <div class="flex-none">' . smc_icon(array('icon' => 'line-marker', 'group' => 'utilities', 'size' => '24', 'class' => 'text-black')) . '</div>
+                        <div>Located on <span class="uppercase">' . $location . '</span></div>
+                      </div>';
+      }
+      if ($phone) {
+        $response .= '<div class="flex gap-x-4">
+                        <div class="flex-none">' . smc_icon(array('icon' => 'line-phone', 'group' => 'utilities', 'size' => '24', 'class' => 'text-black')) . '</div>
+                        <div>' . $phone . '</div>
+                      </div>';
+      }
+      $response .= '</div>
+                </div>
+              </a>';
+
+    endwhile;
+
+    $response .= '</div>';
+    //$response .= '<div class="blocker absolute inset-0 bg-white bg-opacity-40" style="display: none;"></div>';
+  } else {
+    //$response = '<div class="text-center py-4 px-8">No Store Found</div>';
+  }
+
+  wp_reset_postdata();
+
+  if (!$central_stores->have_posts() && !$market_street_stores->have_posts()) {
+    $response = '<div class="text-center py-4 px-8">No Store Found</div>';
+  }
+
+  echo $response;
+
+  exit;
+}

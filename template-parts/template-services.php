@@ -13,13 +13,25 @@ if (get_query_var('cat')) {
 
 get_header();
 
+$button_style = '';
+$primary_color = get_field('primary_color', 'option');
+if ($primary_color) {
+  $button_style = 'color: white; background: ' . $primary_color;
+  //$filter_button_style = 'color: ' . $primary_color;
+  echo '<style>';
+  echo '.store-filter-button:hover, .store-filter-button.button-active {
+    color: ' . $primary_color . '
+  }';
+  echo '</style>';
+}
+
 get_template_part('template-parts/layouts/page-header', '', array('breadcrumbs' => false));
 ?>
 
 <section class="relative pt-16 pb-12 lg:pt-24 lg:pb-16">
   <div class="container max-w-screen-xl">
     <div class="flex flex-col gap-y-4 lg:gap-y-0 lg:flex-row lg:gap-x-3">
-      <div class="flex gap-x-3">
+      <div class="flex gap-x-3 w-full">
         <div class="flex-none flex items-center">
           <span class="text-3xl lg:text-4xl uppercase font-bold text-black">Categories</span>
         </div>
@@ -27,8 +39,10 @@ get_template_part('template-parts/layouts/page-header', '', array('breadcrumbs' 
       </div>
       <div class="flex-none">
         <div class="rounded-full bg-[#F5F7F8] h-14 pl-3 pr-1 flex items-center border border-[#95A7B5] shadow-inner">
-          <input type="text" class="w-full lg:w-60 h-12 bg-transparent border-none rounded-l-full focus:border-none focus:ring-0 focus:outline-none" placeholder="Insert your query">
-          <button class="flex-none bg-primary text-white py-3 px-8 rounded-full">SEARCH</button>
+          <form id="search-store">
+            <input type="text" id="search-store-input" class="w-full lg:w-60 h-12 bg-transparent border-none rounded-l-full focus:border-none focus:ring-0 focus:outline-none" placeholder="Insert your query">
+            <button type="submit" id="search-store-button" class="flex-none bg-black text-white py-3 px-8 rounded-full hover:opacity-70 transition" style="<?php echo $button_style ?>">SEARCH</button>
+          </form>
         </div>
       </div>
     </div>
@@ -49,14 +63,16 @@ get_template_part('template-parts/layouts/page-header', '', array('breadcrumbs' 
               $term_id = $term->term_id;
               $icon = get_field('svg_icon', $term->taxonomy . '_' . $term->term_id);
               ?>
-              <div class="swiper-slide w-32 lg:w-[148px]"><button type="button" data-id="<?php echo $term_id ?>" data-slug="<?php echo $term->slug ?>" class="store-filter-button text-center flex flex-col items-center gap-y-3 mx-auto text-black hover:text-primary transition">
+              <div class="swiper-slide w-32 lg:w-[148px]">
+                <button type="button" data-id="<?php echo $term_id ?>" data-slug="<?php echo $term->slug ?>" class="store-filter-button text-center flex flex-col items-center gap-y-3 mx-auto text-black transition">
                   <?php
                   if ($icon) {
                     echo smc_icon(array('icon_src' => $icon['id'], 'size' => '96', 'class' => 'w-16 h-16 lg:w-24 lg:h-24'));
                   }
                   ?>
                   <h5 class="text-sm lg:text-base uppercase font-bold leading-tight"><?php echo $term->name ?></h5>
-                </button></div>
+                </button>
+              </div>
             <?php endforeach; ?>
           </div>
         </div>
@@ -154,7 +170,7 @@ get_template_part('template-parts/layouts/page-header', '', array('breadcrumbs' 
                 // $('#posts-search-button .spinner-border')
                 //   .removeClass('opacity-0')
                 //   .addClass('opacity-100');
-                //$('.stores-container .blocker').show();
+                $('.stores-container .blocker').show();
               },
               success: function(res) {
                 $('.stores-container .blocker').hide();
@@ -172,5 +188,32 @@ get_template_part('template-parts/layouts/page-header', '', array('breadcrumbs' 
 </section>
 
 <?php get_template_part('template-parts/page', 'builder'); ?>
+
+<script>
+  jQuery(function($) {
+    $('#search-store').on('submit', function(event) {
+      event.preventDefault();
+      let search_query = $('#search-store-input').val();
+      $('.store-filter-button').removeClass('.button-active');
+
+      $.ajax({
+        type: 'POST',
+        url: '/wp-admin/admin-ajax.php',
+        dataType: 'html',
+        data: {
+          action: 'search_stores',
+          search: search_query,
+        },
+        beforeSend: function() {
+          $('.stores-container .blocker').show();
+        },
+        success: function(res) {
+          $('.stores-grid').html(res);
+          $('.stores-container .blocker').hide();
+        },
+      });
+    });
+  });
+</script>
 
 <?php get_footer(); ?>

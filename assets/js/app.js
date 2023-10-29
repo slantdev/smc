@@ -94,13 +94,7 @@ jQuery(function ($) {
     $('.collapse').find('input[type=checkbox]').prop('checked', false);
     $(this).find('input[type=checkbox]').prop('checked', true);
     if ($(this).find('input[type=checkbox]').is(':checked')) {}
-    // setTimeout(() => {
-    //   $('html, body').scrollTop(
-    //     $(this).offset().top - $('.site-header').outerHeight(true)
-    //   );
-    // }, 500);
   });
-
   $("a[href*='#']").click(function (e) {
     //e.preventDefault();
     //var urlhash = $(location).prop('hash');

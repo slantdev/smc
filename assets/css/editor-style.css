@@ -3512,6 +3512,12 @@ body {
 .hover\:no-underline:hover {
     text-decoration-line: none;
 }
+.hover\:opacity-60:hover {
+    opacity: 0.6;
+}
+.hover\:opacity-70:hover {
+    opacity: 0.7;
+}
 .hover\:shadow-\[0_3px_12px_rgba\(0\2c 0\2c 0\2c 0\.24\)\]:hover {
     --tw-shadow: 0 3px 12px rgba(0,0,0,0.24);
     --tw-shadow-colored: 0 3px 12px var(--tw-shadow-color);

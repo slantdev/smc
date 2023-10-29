@@ -100,11 +100,6 @@ jQuery(function ($) {
     $(this).find('input[type=checkbox]').prop('checked', true);
     if ($(this).find('input[type=checkbox]').is(':checked')) {
     }
-    // setTimeout(() => {
-    //   $('html, body').scrollTop(
-    //     $(this).offset().top - $('.site-header').outerHeight(true)
-    //   );
-    // }, 500);
   });
 
   $("a[href*='#']").click(function (e) {
