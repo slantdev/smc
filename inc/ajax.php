@@ -301,60 +301,6 @@ function filter_stores()
     $postsPerPage = -1;
   }
 
-  // if ($search_query) {
-  //   if ($category_filter == 'all') {
-  //     $args = array(
-  //       'post_type' => 'store',
-  //       'posts_per_page' => $postsPerPage,
-  //       'orderby' => 'menu_order',
-  //       'order' => 'ASC',
-  //       's' => $search_query,
-  //       'post_status' => 'publish',
-  //     );
-  //   } else {
-  //     $args = array(
-  //       'post_type' => 'store',
-  //       'posts_per_page' => $postsPerPage,
-  //       'orderby' => 'menu_order',
-  //       'order' => 'ASC',
-  //       's' => $search_query,
-  //       'post_status' => 'publish',
-  //       'tax_query' => array(
-  //         array(
-  //           'taxonomy' => 'store-category',
-  //           'field'    => 'term_id',
-  //           'terms'    => $category_filter,
-  //         ),
-  //       ),
-  //     );
-  //   }
-  // } else {
-  //   if ($category_filter == 'all') {
-  //     $args = array(
-  //       'post_type' => 'store',
-  //       'posts_per_page' => $postsPerPage,
-  //       'orderby' => 'menu_order',
-  //       'order' => 'ASC',
-  //       'post_status' => 'publish',
-  //     );
-  //   } else {
-  //     $args = array(
-  //       'post_type' => 'store',
-  //       'posts_per_page' => $postsPerPage,
-  //       'orderby' => 'menu_order',
-  //       'order' => 'ASC',
-  //       'post_status' => 'publish',
-  //       'tax_query' => array(
-  //         array(
-  //           'taxonomy' => 'store-category',
-  //           'field'    => 'term_id',
-  //           'terms'    => $category_filter,
-  //         ),
-  //       ),
-  //     );
-  //   }
-  // }
-
   $central_stores = new WP_Query(
     array(
       'post_type' => 'store',
@@ -524,60 +470,6 @@ function search_stores()
 {
   $search_query = $_POST['search'];
 
-  // if ($search_query) {
-  //   if ($category_filter == 'all') {
-  //     $args = array(
-  //       'post_type' => 'store',
-  //       'posts_per_page' => $postsPerPage,
-  //       'orderby' => 'menu_order',
-  //       'order' => 'ASC',
-  //       's' => $search_query,
-  //       'post_status' => 'publish',
-  //     );
-  //   } else {
-  //     $args = array(
-  //       'post_type' => 'store',
-  //       'posts_per_page' => $postsPerPage,
-  //       'orderby' => 'menu_order',
-  //       'order' => 'ASC',
-  //       's' => $search_query,
-  //       'post_status' => 'publish',
-  //       'tax_query' => array(
-  //         array(
-  //           'taxonomy' => 'store-category',
-  //           'field'    => 'term_id',
-  //           'terms'    => $category_filter,
-  //         ),
-  //       ),
-  //     );
-  //   }
-  // } else {
-  //   if ($category_filter == 'all') {
-  //     $args = array(
-  //       'post_type' => 'store',
-  //       'posts_per_page' => $postsPerPage,
-  //       'orderby' => 'menu_order',
-  //       'order' => 'ASC',
-  //       'post_status' => 'publish',
-  //     );
-  //   } else {
-  //     $args = array(
-  //       'post_type' => 'store',
-  //       'posts_per_page' => $postsPerPage,
-  //       'orderby' => 'menu_order',
-  //       'order' => 'ASC',
-  //       'post_status' => 'publish',
-  //       'tax_query' => array(
-  //         array(
-  //           'taxonomy' => 'store-category',
-  //           'field'    => 'term_id',
-  //           'terms'    => $category_filter,
-  //         ),
-  //       ),
-  //     );
-  //   }
-  // }
-
   $central_stores = new WP_Query(
     array(
       'post_type' => 'store',
@@ -586,6 +478,13 @@ function search_stores()
       'order' => 'ASC',
       'post_status' => 'publish',
       's' => $search_query,
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'store-area',
+          'field' => 'slug',
+          'terms' => 'central',
+        ),
+      ),
     )
   );
 
@@ -654,6 +553,13 @@ function search_stores()
       'order' => 'ASC',
       'post_status' => 'publish',
       's' => $search_query,
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'store-area',
+          'field' => 'slug',
+          'terms' => 'market-street',
+        ),
+      ),
     )
   );
 
