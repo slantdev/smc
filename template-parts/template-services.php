@@ -38,12 +38,10 @@ get_template_part('template-parts/layouts/page-header', '', array('breadcrumbs' 
         <div class="border-b border-solid border-slate-500 w-full">&nbsp;</div>
       </div>
       <div class="flex-none">
-        <div class="rounded-full bg-[#F5F7F8] h-14 pl-3 pr-1 flex items-center border border-[#95A7B5] shadow-inner">
-          <form id="search-store">
-            <input type="text" id="search-store-input" class="w-full lg:w-60 h-12 bg-transparent border-none rounded-l-full focus:border-none focus:ring-0 focus:outline-none" placeholder="Insert your query">
-            <button type="submit" id="search-store-button" class="flex-none bg-black text-white py-3 px-8 rounded-full hover:opacity-70 transition" style="<?php echo $button_style ?>">SEARCH</button>
-          </form>
-        </div>
+        <form id="search-store" class="flex items-center h-14 pl-3 pr-1 rounded-full bg-[#F5F7F8] border border-[#95A7B5] shadow-inner">
+          <input type="text" id="search-store-input" class="w-full lg:w-60 h-12 bg-transparent border-none rounded-l-full focus:border-none focus:ring-0 focus:outline-none" placeholder="Insert your query">
+          <button type="submit" id="search-store-button" class="flex-none bg-black text-white py-3 px-8 rounded-full hover:opacity-70 transition" style="<?php echo $button_style ?>">SEARCH</button>
+        </form>
       </div>
     </div>
     <div class="mt-10 relative px-4 lg:px-0">
@@ -97,7 +95,7 @@ get_template_part('template-parts/layouts/page-header', '', array('breadcrumbs' 
     </div>
   </div>
 </section>
-<section class="relative bg-[#F4F4F2] pt-24 pb-24">
+<section id="stores-container" class="relative bg-[#F4F4F2] pt-24 pb-24 scroll-m-16 lg:scroll-m-24">
   <div class="container max-w-screen-xl">
     <div class="mt-0">
       <div class="stores-container relative scroll-mt-36">
@@ -208,6 +206,9 @@ get_template_part('template-parts/layouts/page-header', '', array('breadcrumbs' 
           $('.stores-container .blocker').show();
         },
         success: function(res) {
+          document.getElementById("stores-container").scrollIntoView({
+            behavior: "smooth"
+          })
           $('.stores-grid').html(res);
           $('.stores-container .blocker').hide();
         },

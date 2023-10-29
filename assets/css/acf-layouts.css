@@ -4120,6 +4120,15 @@ details.collapse summary::-webkit-details-marker {
 .cursor-pointer {
   cursor: pointer;
 }
+.-scroll-m-24 {
+  scroll-margin: -6rem;
+}
+.scroll-m-24 {
+  scroll-margin: 6rem;
+}
+.scroll-m-16 {
+  scroll-margin: 4rem;
+}
 .scroll-mt-36 {
   scroll-margin-top: 9rem;
 }
@@ -5905,6 +5914,10 @@ details.collapse summary::-webkit-details-marker {
 
   .lg\:max-w-none {
     max-width: none;
+  }
+
+  .lg\:scroll-m-24 {
+    scroll-margin: 6rem;
   }
 
   .lg\:grid-cols-3 {
