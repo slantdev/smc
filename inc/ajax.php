@@ -116,9 +116,12 @@ function pagination_load_stores()
 
     $count = $count->post_count;
 
+    $central_term = get_term_by('slug', 'central', 'store-area');
+    $central_title = $central_term->name;
+
     if ($central_stores->have_posts()) :
       echo '<div class="flex gap-x-4 lg:gap-x-6 mb-8 lg:mb-12">
-        <h2 class="md:flex-none text-3xl lg:text-4xl font-bold text-black">South Melbourne Central</h2>
+        <h2 class="md:flex-none text-3xl lg:text-4xl font-bold text-black">' . $central_title . '</h2>
         <div class="hidden md:block border-b border-solid border-slate-400 w-full">&nbsp;</div>
       </div>';
       echo '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 lg:gap-8">';
@@ -161,10 +164,13 @@ function pagination_load_stores()
 
     wp_reset_postdata();
 
+    $market_street_term = get_term_by('slug', 'market-street', 'store-area');
+    $market_street_title = $market_street_term->name;
+
     if ($market_street_stores->have_posts()) :
       echo '<div class="mt-24"></div>';
       echo '<div class="flex gap-x-4 lg:gap-x-6 mb-8 lg:mb-12">
-      <h2 class="md:flex-none text-3xl lg:text-4xl font-bold text-black">South Melbourne - Market Street</h2>
+      <h2 class="md:flex-none text-3xl lg:text-4xl font-bold text-black">' . $market_street_title . '</h2>
       <div class="hidden md:block border-b border-solid border-slate-400 w-full">&nbsp;</div>
     </div>';
       echo '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 lg:gap-8">';
