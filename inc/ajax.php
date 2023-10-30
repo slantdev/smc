@@ -323,13 +323,15 @@ function filter_stores()
       ),
     )
   );
+  $central_term = get_term_by('slug', 'central', 'store-area');
+  $central_title = $central_term->name;
 
   $response = '';
 
   if ($central_stores->have_posts()) {
 
     $response .= '<div class="flex gap-x-6 mb-12">
-        <h2 class="flex-none text-4xl font-bold text-black">South Melbourne Central</h2>
+        <h2 class="flex-none text-4xl font-bold text-black">' . $central_title . '</h2>
         <div class="border-b border-solid border-slate-400 w-full">&nbsp;</div>
       </div>';
 
@@ -404,10 +406,13 @@ function filter_stores()
     )
   );
 
+  $market_street_term = get_term_by('slug', 'market-street', 'store-area');
+  $market_street_title = $market_street_term->name;
+
   if ($market_street_stores->have_posts()) {
     $response .= '<div class="mt-24"></div>';
     $response .= '<div class="flex gap-x-6 mb-12">
-        <h2 class="flex-none text-4xl font-bold text-black">South Melbourne - Market Street</h2>
+        <h2 class="flex-none text-4xl font-bold text-black">' . $market_street_title . '</h2>
         <div class="border-b border-solid border-slate-400 w-full">&nbsp;</div>
       </div>';
 
@@ -487,13 +492,15 @@ function search_stores()
       ),
     )
   );
+  $central_term = get_term_by('slug', 'central', 'store-area');
+  $central_title = $central_term->name;
 
   $response = '';
 
   if ($central_stores->have_posts()) {
 
     $response .= '<div class="flex gap-x-6 mb-12">
-        <h2 class="flex-none text-4xl font-bold text-black">South Melbourne Central</h2>
+        <h2 class="flex-none text-4xl font-bold text-black">' . $central_title . '</h2>
         <div class="border-b border-solid border-slate-400 w-full">&nbsp;</div>
       </div>';
 
@@ -563,10 +570,13 @@ function search_stores()
     )
   );
 
+  $market_street_term = get_term_by('slug', 'market-street', 'store-area');
+  $market_street_title = $market_street_term->name;
+
   if ($market_street_stores->have_posts()) {
     $response .= '<div class="mt-24"></div>';
     $response .= '<div class="flex gap-x-6 mb-12">
-        <h2 class="flex-none text-4xl font-bold text-black">South Melbourne - Market Street</h2>
+        <h2 class="flex-none text-4xl font-bold text-black">' . $market_street_title . '</h2>
         <div class="border-b border-solid border-slate-400 w-full">&nbsp;</div>
       </div>';
 
