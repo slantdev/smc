@@ -4078,12 +4078,6 @@ details.collapse summary::-webkit-details-marker {
 .cursor-pointer {
   cursor: pointer;
 }
-.-scroll-m-24 {
-  scroll-margin: -6rem;
-}
-.scroll-m-24 {
-  scroll-margin: 6rem;
-}
 .scroll-m-16 {
   scroll-margin: 4rem;
 }
@@ -5091,6 +5085,7 @@ html {
   .subscribe-form .frm_form_submit_style,
   .subscribe-form .frm_style_formidable-style.with_frm_style .frm-edit-page-btn {
   border-radius: 9999px;
+  border-style: none;
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
   --tw-shadow: 0 0 #0000;
@@ -5394,10 +5389,6 @@ html {
 .hover\:font-semibold:hover {
   font-weight: 600;
 }
-.hover\:text-primary:hover {
-  --tw-text-opacity: 1;
-  color: rgb(14 165 233 / var(--tw-text-opacity));
-}
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -5407,9 +5398,6 @@ html {
 }
 .hover\:no-underline:hover {
   text-decoration-line: none;
-}
-.hover\:opacity-60:hover {
-  opacity: 0.6;
 }
 .hover\:opacity-70:hover {
   opacity: 0.7;
