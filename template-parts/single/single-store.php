@@ -41,7 +41,7 @@ if ($location_terms) {
 }
 $store_gallery = get_field('store_gallery');
 ?>
-<section class="relative w-full h-[200px] xl:h-[400px] 2xl:h-[512px] 3xl:h-[600px] bg-black">
+<section id="store-banner" class="relative w-full h-[200px] xl:h-[400px] 2xl:h-[512px] 3xl:h-[600px] bg-black">
   <?php if ($store_page_banner) { ?>
     <div class="absolute inset-0 z-0">
       <img src="<?php echo $store_page_banner['url'] ?>" alt="<?php echo $store_page_banner['alt'] ?>" class="object-cover h-full w-full <?php echo $banner_class ?>">
