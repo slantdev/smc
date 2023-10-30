@@ -4016,6 +4016,9 @@ details.collapse summary::-webkit-details-marker {
 .h-\[180px\] {
   height: 180px;
 }
+.h-\[600px\] {
+  height: 600px;
+}
 .min-h-screen {
   min-height: 100vh;
 }
