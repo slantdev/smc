@@ -148,7 +148,7 @@ $store_gallery = get_field('store_gallery');
 </section>
 
 <?php if ($store_gallery) : ?>
-  <section class="relative py-12 md:py-20 bg-[#F4F4F2]">
+  <section id="store-gallery" class="relative py-12 md:py-20 bg-[#F4F4F2]">
     <div class="container max-w-screen-lg">
       <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff; --swiper-navigation-size: 20px" class="swiper gallerySwiper rounded-lg xl:rounded-xl">
         <div class="swiper-wrapper">
