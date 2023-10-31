@@ -67,6 +67,17 @@ $store_gallery = get_field('store_gallery');
         <h1 class="text-4xl lg:text-[45px] font-bold uppercase mb-8"><?php echo get_the_title() ?></h1>
         <?php if ($description['lead_text'] || $description['description']) : ?>
           <div class="mb-8 lg:mb-12">
+            <style>
+              #store-description.prose a {
+                color: <?php echo $primary_color ?>;
+                text-decoration: underline;
+              }
+
+              #store-description.prose a:hover {
+                color: <?php echo $primary_color ?>;
+                text-decoration: none;
+              }
+            </style>
             <?php
             if ($description['lead_text']) {
               echo '<div class="font-medium text-xl md:text-2xl mb-6">' . $description['lead_text'] . '</div>';
@@ -74,7 +85,7 @@ $store_gallery = get_field('store_gallery');
             ?>
             <?php
             if ($description['description']) {
-              echo '<div class="text-lg">' . $description['description'] . '</div>';
+              echo '<div id="store-description" class="prose prose-lg prose-li:my-1 prose-p:text-black prose-ul:text-black prose-ol:text-black prose-strong:text-black">' . $description['description'] . '</div>';
             }
             ?>
           </div>
