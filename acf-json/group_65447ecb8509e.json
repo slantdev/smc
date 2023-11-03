@@ -37,14 +37,14 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "acfe_display_title": "",
+    "acfe_display_title": "What's On Settings",
     "acfe_autosync": [
         "json"
     ],
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1698987946,
+    "modified": 1698988806,
     "acfe_categories": {
         "cpt": "CPT"
     }

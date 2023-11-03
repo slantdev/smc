@@ -88,6 +88,10 @@ if (!$categories) {
             <?php
             $id = get_the_ID();
             $custom_link = get_field('custom_link', $id);
+            $custom_link_text = 'FIND OUT MORE';
+            if ($custom_link['title']) {
+              $custom_link_text = $custom_link['title'];
+            }
             if ($grid_style == 'simple') :
             ?>
               <div>
@@ -112,7 +116,9 @@ if (!$categories) {
                 <div class="text-slate-500 text-sm"><?php the_excerpt() ?></div>
                 <?php if ($custom_link) : ?>
                   <div class="mt-4">
-                    <a href="<?php echo $custom_link['url'] ?>" target="<?php echo $custom_link['target'] ?>" class="text-sm uppercase font-medium hover:underline" style="<?php echo $link_style; ?>">FIND OUT MORE</a>
+                    <a href="<?php echo $custom_link['url'] ?>" target="<?php echo $custom_link['target'] ?>" class="text-sm uppercase font-medium hover:underline" style="<?php echo $link_style; ?>">
+                      <?php echo $custom_link_text ?>
+                    </a>
                   </div>
                 <?php endif; ?>
               </div>
