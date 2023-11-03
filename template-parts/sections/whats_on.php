@@ -87,21 +87,34 @@ if (!$categories) {
           <?php while ($whats_on->have_posts()) : $whats_on->the_post(); ?>
             <?php
             $id = get_the_ID();
+            $custom_link = get_field('custom_link', $id);
             if ($grid_style == 'simple') :
             ?>
               <div>
                 <div class="aspect-w-1 aspect-h-1 rounded-lg mb-4">
                   <?php if (has_post_thumbnail($id)) : ?>
-                    <a href="<?php the_permalink() ?>" class="block">
+                    <?php if ($custom_link) : ?>
+                      <a href="<?php echo $custom_link['url'] ?>" class="block" target="<?php echo $custom_link['target'] ?>">
+                        <?php echo get_the_post_thumbnail($id, 'full', array('class' => 'w-full h-full object-cover rounded-lg')); ?>
+                      </a>
+                    <?php else : ?>
                       <?php echo get_the_post_thumbnail($id, 'full', array('class' => 'w-full h-full object-cover rounded-lg')); ?>
-                    </a>
+                    <?php endif; ?>
                   <?php endif; ?>
                 </div>
-                <h3 class="text-2xl lg:text-3xl font-normal mb-4"><a href="<?php the_permalink() ?>" class="text-slate-600 hover:underline"><?php the_title() ?></a></h3>
+                <h3 class="text-2xl lg:text-3xl font-normal mb-4">
+                  <?php if ($custom_link) : ?>
+                    <a href="<?php echo $custom_link['url'] ?>" target="<?php echo $custom_link['target'] ?>" class="text-slate-600 hover:underline"><?php the_title() ?></a>
+                  <?php else : ?>
+                    <?php the_title() ?>
+                  <?php endif; ?>
+                </h3>
                 <div class="text-slate-500 text-sm"><?php the_excerpt() ?></div>
-                <div class="mt-4">
-                  <a href="<?php the_permalink() ?>" class="text-sm uppercase font-medium hover:underline" style="<?php echo $link_style; ?>">FIND OUT MORE</a>
-                </div>
+                <?php if ($custom_link) : ?>
+                  <div class="mt-4">
+                    <a href="<?php echo $custom_link['url'] ?>" target="<?php echo $custom_link['target'] ?>" class="text-sm uppercase font-medium hover:underline" style="<?php echo $link_style; ?>">FIND OUT MORE</a>
+                  </div>
+                <?php endif; ?>
               </div>
             <?php elseif ($grid_style == 'card') : ?>
               <div class="shadow-[0_3px_6px_rgba(0,0,0,0.16)] bg-white rounded-xl overflow-hidden">
