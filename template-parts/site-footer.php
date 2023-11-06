@@ -133,7 +133,7 @@ $disable_instagram = get_field('disable_instagram', $the_id);
   </section>
 <?php endif; ?>
 
-<?php if ($instagram && !$disable_instagram) : ?>
+<?php if ($instagram_form_shortcode && !$disable_instagram) : ?>
   <section id="instagram" style="<?php echo $instagram_style ?>">
     <div class="relative container max-w-screen-xl mx-auto pt-8 lg:pt-12 xl:pt-20 pb-8 lg:pb-12 xl:pb-20">
 
