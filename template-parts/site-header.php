@@ -30,7 +30,9 @@
               $social_url = $social['social_link']['url'];
               $social_target = $social['social_link']['target'];
               ?>
-              <li><a href="<?php echo $social_url ?>" title="<?php echo $social_title ?>" target="<?php echo $social_target ?>" style="<?php echo $social_link_style ?>"><?php echo smc_icon(array('icon' => $social_icon, 'group' => 'social', 'size' => '24', 'class' => '')); ?></a></li>
+              <?php if ($social_url) : ?>
+                <li><a href="<?php echo $social_url ?>" title="<?php echo $social_title ?>" target="<?php echo $social_target ?>" style="<?php echo $social_link_style ?>"><?php echo smc_icon(array('icon' => $social_icon, 'group' => 'social', 'size' => '24', 'class' => '')); ?></a></li>
+              <?php endif; ?>
             <?php endforeach; ?>
           </ul>
         </div>

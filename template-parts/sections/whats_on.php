@@ -89,7 +89,7 @@ if (!$categories) {
             $id = get_the_ID();
             $custom_link = get_field('custom_link', $id);
             $custom_link_text = 'FIND OUT MORE';
-            if ($custom_link['title']) {
+            if ($custom_link && $custom_link['title']) {
               $custom_link_text = $custom_link['title'];
             }
             if ($grid_style == 'simple') :

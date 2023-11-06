@@ -58,12 +58,29 @@ if ($subscribe_text_color) {
   $subscribe_style .= ' color: ' . $subscribe_text_color . ';';
 }
 
+$instagram = get_field('instagram', 'option')['instagram'];
+$instagram_heading = $instagram['heading'];
+$instagram_description = $instagram['description'];
+$instagram_form_shortcode = $instagram['form_shortcode'];
+$instagram_background_color = $instagram['instagram_colors']['background_color'];
+$instagram_text_color = $instagram['instagram_colors']['text_color'];
+$instagram_style = '';
+if ($subscribe_background_color) {
+  $instagram_style .= ' background-color: ' . $instagram_background_color . ';';
+}
+if ($subscribe_text_color) {
+  $instagram_style .= ' color: ' . $instagram_text_color . ';';
+}
+
 ?>
 
 <?php
 wp_reset_query();
 
-$term_id = get_queried_object()->term_id;
+$term_id = '';
+if (is_archive()) {
+  $term_id = get_queried_object()->term_id;
+}
 if ($term_id) {
   $the_id = 'term_' . $term_id;
 } else {
@@ -112,6 +129,31 @@ $disable_instagram = get_field('disable_instagram', $the_id);
           </div>
         </div>
       </div>
+    </div>
+  </section>
+<?php endif; ?>
+
+<?php if ($instagram && !$disable_instagram) : ?>
+  <section id="instagram" style="<?php echo $instagram_style ?>">
+    <div class="relative container max-w-screen-xl mx-auto pt-8 lg:pt-12 xl:pt-20 pb-8 lg:pb-12 xl:pb-20">
+
+      <?php if ($instagram_heading) : ?>
+        <div class="flex gap-x-4 lg:gap-x-6 mb-8 lg:mb-12">
+          <h2 class="flex-none text-3xl lg:text-4xl font-bold text-black"><?php echo $instagram_heading ?></h2>
+          <div class="border-b border-solid border-slate-400 w-full">&nbsp;</div>
+        </div>
+      <?php endif; ?>
+      <?php if ($instagram_description) : ?>
+        <div class="flex lg:gap-x-8 mb-8">
+          <div class="w-full lg:w-1/2 text-slate-600"><?php echo $instagram_description ?></div>
+        </div>
+      <?php endif; ?>
+
+      <?php if ($instagram_form_shortcode) : ?>
+        <div class="instagram-container">
+          <?php echo do_shortcode($instagram_form_shortcode) ?>
+        </div>
+      <?php endif; ?>
     </div>
   </section>
 <?php endif; ?>
