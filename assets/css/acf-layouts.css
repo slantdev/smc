@@ -4146,6 +4146,9 @@ details.collapse summary::-webkit-details-marker {
 .gap-y-8 {
   row-gap: 2rem;
 }
+.gap-y-2 {
+  row-gap: 0.5rem;
+}
 .divide-x > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-x-reverse: 0;
   border-right-width: calc(1px * var(--tw-divide-x-reverse));
@@ -6026,5 +6029,8 @@ details.collapse summary::-webkit-details-marker {
     font-size: 1.125rem;
     line-height: 1.75rem;
   }
+}
+.\[\&\>a\:first-child\]\:pl-0>a:first-child {
+  padding-left: 0px;
 }
 
