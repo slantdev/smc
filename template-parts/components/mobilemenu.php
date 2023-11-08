@@ -69,7 +69,7 @@
     <div class="absolute bottom-0 left-0 right-0 py-4 px-8">
       <div class="flex justify-center">
         <ul class="top-nav--ul flex gap-x-4">
-          <?php foreach ($social_links as $link) : ?>
+          <?php foreach ($social_links as $social) : ?>
             <?php
             $social_icon = $social['select_social_links'];
             $social_title = isset($social['social_link']['title']) ? $social['social_link']['title'] : null;
