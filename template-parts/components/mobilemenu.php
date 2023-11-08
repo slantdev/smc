@@ -70,8 +70,14 @@
       <div class="flex justify-center">
         <ul class="top-nav--ul flex gap-x-4">
           <?php foreach ($social_links as $link) : ?>
-            <?php if ($link['social_link']['url']) : ?>
-              <li><a class="text-white/70 hover:text-white" href="<?php echo $link['social_link']['url'] ?>" target="<?php echo $link['social_link']['target'] ?>"><?php echo smc_icon(array('icon' => $link['select_social_links'], 'group' => 'social', 'size' => '24', 'class' => '')); ?></a></li>
+            <?php
+            $social_icon = $social['select_social_links'];
+            $social_title = isset($social['social_link']['title']) ? $social['social_link']['title'] : null;
+            $social_url = isset($social['social_link']['url']) ? $social['social_link']['url'] : null;
+            $social_target = isset($social['social_link']['target']) ? $social['social_link']['target'] : null;
+            ?>
+            <?php if ($social_url) : ?>
+              <li><a class="text-white/70 hover:text-white" href="<?php echo $social_url ?>" target="<?php echo $social_target ?>"><?php echo smc_icon(array('icon' => $social_icon, 'group' => 'social', 'size' => '24', 'class' => '')); ?></a></li>
             <?php endif; ?>
           <?php endforeach; ?>
         </ul>

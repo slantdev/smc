@@ -26,9 +26,9 @@
             <?php foreach ($top_nav_social_links as $social) : ?>
               <?php
               $social_icon = $social['select_social_links'];
-              $social_title = $social['social_link']['title'];
-              $social_url = $social['social_link']['url'];
-              $social_target = $social['social_link']['target'];
+              $social_title = isset($social['social_link']['title']) ? $social['social_link']['title'] : null;
+              $social_url = isset($social['social_link']['url']) ? $social['social_link']['url'] : null;
+              $social_target = isset($social['social_link']['target']) ? $social['social_link']['target'] : null;
               ?>
               <?php if ($social_url) : ?>
                 <li><a href="<?php echo $social_url ?>" title="<?php echo $social_title ?>" target="<?php echo $social_target ?>" style="<?php echo $social_link_style ?>"><?php echo smc_icon(array('icon' => $social_icon, 'group' => 'social', 'size' => '24', 'class' => '')); ?></a></li>

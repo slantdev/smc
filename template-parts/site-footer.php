@@ -242,7 +242,14 @@ $disable_instagram = get_field('disable_instagram', $the_id);
               <?php if ($quick_links['links']) : ?>
                 <ul>
                   <?php foreach ($quick_links['links'] as $link) : ?>
-                    <li class="py-1"><a class="underline font-normal hover:no-underline transition-all whitespace-nowrap" href="<?php echo $link['link']['url'] ?>" target="<?php echo $link['link']['target'] ?>"><?php echo $link['link']['title'] ?></a></li>
+                    <?php
+                    $link_title = isset($link['link']['title']) ? $link['link']['title'] : null;
+                    $link_url = isset($link['link']['url']) ? $link['link']['url'] : null;
+                    $link_target = isset($link['link']['target']) ? $link['link']['target'] : null;
+                    if ($link_url) :
+                    ?>
+                      <li class="py-1"><a class="underline font-normal hover:no-underline transition-all whitespace-nowrap" href="<?php echo $link_url ?>" target="<?php echo $link_target ?>"><?php echo $link_title ?></a></li>
+                    <?php endif; ?>
                   <?php endforeach; ?>
                 </ul>
               <?php endif; ?>
@@ -261,7 +268,14 @@ $disable_instagram = get_field('disable_instagram', $the_id);
       <?php if ($copyright_info['copyright_links']) : ?>
         <div class="text-sm font-semibold flex flex-wrap gap-y-2 divide-x divide-white/70 [&>a:first-child]:pl-0">
           <?php foreach ($copyright_info['copyright_links'] as $link) : ?>
-            <a class="inline-block px-4 no-underline font-normal hover:underline transition-all" href="<?php echo $link['link']['url'] ?>" target="<?php echo $link['link']['target'] ?>"><?php echo $link['link']['title'] ?></a>
+            <?php
+            $link_title = isset($link['link']['title']) ? $link['link']['title'] : null;
+            $link_url = isset($link['link']['url']) ? $link['link']['url'] : null;
+            $link_target = isset($link['link']['target']) ? $link['link']['target'] : null;
+            if ($link_url) :
+            ?>
+              <a class="inline-block px-4 no-underline font-normal hover:underline transition-all" href="<?php echo $link_url ?>" target="<?php echo $link_target ?>"><?php echo $link_title ?></a>
+            <?php endif; ?>
           <?php endforeach; ?>
         </div>
       <?php endif; ?>
