@@ -49,9 +49,6 @@ if (!$categories) {
   );
 }
 
-
-//preint_r($whats_on);
-
 ?>
 
 <section id="<?php echo $section_id ?>" style="<?php echo $section_style ?>">
@@ -74,10 +71,18 @@ if (!$categories) {
           <?php while ($whats_on->have_posts()) : $whats_on->the_post(); ?>
             <?php
             $id = get_the_ID();
+            $custom_link = get_field('custom_link', $id);
+            $link = (isset($custom_link['url'])) ? $custom_link['url'] : '';
             ?>
             <div class="rounded-lg lg:rounded-xl overflow-hidden">
               <?php if (has_post_thumbnail($id)) : ?>
-                <?php echo get_the_post_thumbnail($id, 'full', array('class' => 'rounded-xl')); ?>
+                <?php if ($link) : ?>
+                  <a href="<?php echo $custom_link['url'] ?>" target="<?php echo $custom_link['target'] ?>">
+                  <?php endif; ?>
+                  <?php echo get_the_post_thumbnail($id, 'full', array('class' => 'rounded-xl')); ?>
+                  <?php if ($link) : ?>
+                  </a>
+                <?php endif; ?>
               <?php endif; ?>
             </div>
           <?php endwhile; ?>

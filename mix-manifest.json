@@ -1,5 +1,7 @@
 {
-    "/js/app.js": "/js/app.js?id=435e606374bb44ea06de4ae5b0e31f61",
-    "/css/editor-style.css": "/css/editor-style.css?id=03a0a90cc989a9d4c480a752574b37c3",
-    "/css/app.css": "/css/app.css?id=1574f199e487c866afb056200ee1e6ce"
+    "/assets/js/app.js": "/assets/js/app.js?id=b1f977678cea1ab859e283ff712bc657",
+    "/assets/css/acf-layouts.css": "/assets/css/acf-layouts.css?id=d8f0d9a07380a61633f6390003ef02a1",
+    "/assets/css/admin-style.css": "/assets/css/admin-style.css?id=f95cab5319ce94aece7a60c1323267b5",
+    "/assets/css/editor-style.css": "/assets/css/editor-style.css?id=5ec51ef6671a5b678700baecffdbc7d9",
+    "/assets/css/app.css": "/assets/css/app.css?id=539a7437387e446fee5cf8cb27d119dd"
 }
