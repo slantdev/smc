@@ -159,8 +159,7 @@ if (is_singular('store')) {
 
       <?php if ($instagram_form_shortcode) : ?>
         <div class="instagram-container">
-          <!-- <?php echo do_shortcode($instagram_form_shortcode) ?> -->
-          IG
+          <?php echo do_shortcode($instagram_form_shortcode) ?>
         </div>
       <?php endif; ?>
     </div>
