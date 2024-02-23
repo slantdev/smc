@@ -55,7 +55,7 @@ get_template_part('template-parts/layouts/page-header', '', array('breadcrumbs' 
       if ($terms) :
       ?>
         <div id="store-categories" class="swiper">
-          <div class="swiper-wrapper">
+          <div class="swiper-wrapper xl:justify-between">
             <?php foreach ($terms as $term) : ?>
               <?php
               $term_id = $term->term_id;
@@ -75,8 +75,8 @@ get_template_part('template-parts/layouts/page-header', '', array('breadcrumbs' 
           </div>
         </div>
         <div>
-          <div class="store-categories--button-prev swiper-button-prev -left-4 lg:left-2 after:content-['prev'] after:text-2xl after:lg:text-[40px]"></div>
-          <div class="store-categories--button-next swiper-button-next -right-4 lg:right-2 after:content-['next'] after:text-2xl after:lg:text-[40px]"></div>
+          <div class="store-categories--button-prev swiper-button-prev -left-4 lg:left-0 lg:-translate-x-full 2xl:-left-2 after:content-['prev'] after:text-2xl after:lg:text-[30px] after:2xl:text-[40px]"></div>
+          <div class="store-categories--button-next swiper-button-next -right-4 lg:right-0 lg:translate-x-full 2xl:-right-2 after:content-['next'] after:text-2xl after:lg:text-[30px] after:2xl:text-[40px]"></div>
         </div>
         <script>
           new Swiper('#store-categories', {
@@ -88,6 +88,11 @@ get_template_part('template-parts/layouts/page-header', '', array('breadcrumbs' 
             navigation: {
               nextEl: '.store-categories--button-next',
               prevEl: '.store-categories--button-prev',
+            },
+            breakpoints: {
+              1280: {
+                centerInsufficientSlides: false,
+              }
             }
           });
         </script>

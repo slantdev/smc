@@ -71,6 +71,8 @@ if ($subscribe_background_color) {
 if ($subscribe_text_color) {
   $instagram_style .= ' color: ' . $instagram_text_color . ';';
 }
+$instagram_visibility = $instagram['visibility'];
+$instagram_enable_on_store_pages = $instagram_visibility['enable_on_store_pages'];
 
 ?>
 
@@ -89,6 +91,12 @@ if ($term_id) {
 //echo $the_id;
 $disable_subscribe = get_field('disable_subscribe', $the_id);
 $disable_instagram = get_field('disable_instagram', $the_id);
+
+if (is_singular('store')) {
+  if ($instagram_enable_on_store_pages == 'disable') {
+    $disable_instagram = true;
+  }
+}
 ?>
 
 <?php if ($subscribe && !$disable_subscribe) : ?>
@@ -151,7 +159,8 @@ $disable_instagram = get_field('disable_instagram', $the_id);
 
       <?php if ($instagram_form_shortcode) : ?>
         <div class="instagram-container">
-          <?php echo do_shortcode($instagram_form_shortcode) ?>
+          <!-- <?php echo do_shortcode($instagram_form_shortcode) ?> -->
+          IG
         </div>
       <?php endif; ?>
     </div>
