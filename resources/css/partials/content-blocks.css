@@ -28,7 +28,6 @@
 
 .swiper-button-lock {
   @apply hidden;
-  @apply !block;
 }
 
 .subscribe-form {
