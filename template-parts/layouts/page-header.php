@@ -20,11 +20,14 @@ if ($breadcrumbs !== true) {
 $enabled = get_field('enable_page_header', $the_id);
 
 if ($enabled) :
-  $page_header = get_field('page_header', $the_id);
-  $hero_title = $page_header['hero_title'];
-  $hero_background = $page_header['hero_background'];
-  $hero_bg_color = $page_header['hero_bg_color'];
-  $hero_overlay_color = $page_header['hero_overlay_color'];
+  $page_header = get_field('page_header', $the_id) ?? '';
+  $hero_title = $page_header['hero_title'] ?? '';
+  $hero_text = $page_header['hero_text'] ?? '';
+  $hero_background = $page_header['hero_background'] ?? '';
+  $hero_bg_color = $page_header['hero_bg_color'] ?? '';
+  $hero_overlay_color = $page_header['hero_overlay_color'] ?? '';
+  $cta_button = $page_header['cta_button'];
+  $hero_size = $page_header['hero_size'] ?? '';
 
   if (!$hero_title) {
     if (is_tax()) {
@@ -45,6 +48,11 @@ if ($enabled) :
   }
 
   $enable_breadcrumbs = get_field('enable_breadcrumbs');
+
+  $text_container_padding = 'py-16 lg:py-24';
+  if ($hero_size == 'large') {
+    $text_container_padding = 'py-32 lg:py-48';
+  }
 ?>
   <section class="page-banner relative" style="<?php echo $hero_bg_style; ?>">
     <?php if ($hero_background) { ?>
@@ -56,10 +64,26 @@ if ($enabled) :
       </div>
     <?php } ?>
     <div class="container max-w-screen-xl relative z-10 pt-52 lg:pt-[200px] 2xl:pt-[158px] h-full">
-      <div class="flex flex-col md:flex-row h-full items-center text-white py-16 lg:py-24">
+      <div class="flex flex-col md:flex-row h-full items-center text-white <?php echo $text_container_padding ?>">
         <div class="w-full lg:w-1/2">
           <h1 class="banner-title font-bold text-[40px] lg:text-[50px] leading-tight"><?php echo $hero_title ?></h1>
+          <?php if ($hero_text) : ?>
+            <div class="prose lg:prose-xl text-white mt-4 lg:mt-6">
+              <?php echo $hero_text ?>
+            </div>
+          <?php endif; ?>
+          <?php if ($cta_button) : ?>
+            <div class="mt-4 lg:mt-6">
+              <?php get_template_part('template-parts/components/button', '', array('field' => $cta_button)); ?>
+            </div>
+          <?php endif; ?>
         </div>
+      </div>
+      <div>
+        <?php
+        //preint_r($hero_text);
+        //preint_r($cta_button);
+        ?>
       </div>
     </div>
   </section>

@@ -1,1 +1,61 @@
-.acf-fields>.acf-field.hide-group-label,.acf-fields>.acf-field.label-hidden{padding-top:0}.acf-fields>.acf-field.field-hidden,.acf-fields>.acf-field.hide-group-label>.acf-label,.acf-fields>.acf-field.label-hidden>.acf-label{display:none}.acf-fields .acf-color-picker .wp-picker-container.wp-picker-active{z-index:20}.acf-fields .acf-color-picker .wp-picker-container.wp-picker-active .wp-picker-input-wrap{--tw-border-opacity:1;--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity));border-color:rgb(220 220 222/var(--tw-border-opacity));border-style:solid;border-width:1px;display:flex;margin-top:.25rem;padding:10px;position:absolute;width:235px}.acf-fields .acf-color-picker .wp-picker-container input[type=text].wp-color-picker{width:6rem!important}.acf-fields .acf-color-picker .wp-picker-container .wp-picker-holder{position:absolute;top:87px;z-index:10}.acf-fields .acf-color-picker .wp-picker-container .wp-color-result.button{margin-bottom:.125rem!important}.acf-fields .acf-color-picker .wp-picker-container .iris-picker{margin-top:0;padding-bottom:80px!important}.acf-fields .acf-color-picker .iris-border .iris-palette-container{bottom:10px!important;display:flex;flex-wrap:wrap;gap:2px;left:10px!important;margin:0;padding:0;position:absolute}.acf-fields .acf-color-picker .iris-picker .iris-palette{float:none;height:24px!important;margin-left:0!important;width:24px!important}.frm_insert_form svg{display:inline-block}
+.acf-fields > .acf-field.hide-group-label,
+    .acf-fields > .acf-field.label-hidden {
+      padding-top: 0px;
+}
+      .acf-fields > .acf-field.hide-group-label > .acf-label, .acf-fields > .acf-field.label-hidden > .acf-label {
+      display: none;
+}
+    .acf-fields > .acf-field.field-hidden {
+      display: none;
+}
+  .acf-fields .acf-color-picker .wp-picker-container.wp-picker-active {
+      z-index: 20;
+}
+  .acf-fields .acf-color-picker .wp-picker-container.wp-picker-active .wp-picker-input-wrap {
+      position: absolute;
+      margin-top: 0.25rem;
+      display: flex;
+      width: 235px;
+      border-width: 1px;
+      border-style: solid;
+      --tw-border-opacity: 1;
+      border-color: rgb(220 220 222 / var(--tw-border-opacity));
+      --tw-bg-opacity: 1;
+      background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+      padding: 10px;
+}
+  .acf-fields .acf-color-picker .wp-picker-container input[type='text'].wp-color-picker {
+      width: 6rem !important;
+}
+  .acf-fields .acf-color-picker .wp-picker-container .wp-picker-holder {
+      position: absolute;
+      top: 87px;
+      z-index: 10;
+}
+  .acf-fields .acf-color-picker .wp-picker-container .wp-color-result.button {
+      margin-bottom: 0.125rem !important;
+}
+  .acf-fields .acf-color-picker .wp-picker-container .iris-picker {
+      padding-bottom: 80px !important;
+      margin-top: 0px;
+    }
+  .acf-fields .acf-color-picker .iris-border .iris-palette-container {
+      position: absolute;
+      bottom: 10px !important;
+      left: 10px !important;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px;
+    }
+  .acf-fields .acf-color-picker .iris-picker .iris-palette {
+      width: 24px !important;
+      height: 24px !important;
+      margin-left: 0px !important;
+      float: none;
+    }
+.frm_insert_form svg {
+      display: inline-block;
+}
+

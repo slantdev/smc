@@ -33,10 +33,9 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
-                "class": "hidden",
+                "class": "",
                 "id": ""
             },
-            "acfe_save_meta": 0,
             "default_value": "",
             "acfe_textarea_code": 0,
             "maxlength": "",
@@ -54,7 +53,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "40",
                 "class": "",
                 "id": ""
             },
@@ -81,7 +80,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "25",
+                "width": "20",
                 "class": "",
                 "id": ""
             },
@@ -99,13 +98,41 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "25",
+                "width": "20",
                 "class": "",
                 "id": ""
             },
             "default_value": "#002F56",
             "enable_opacity": 0,
             "return_format": "string"
+        },
+        {
+            "key": "field_68bd0c105eb2f",
+            "label": "Hero Size",
+            "name": "hero_size",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "default": "Default",
+                "large": "Large"
+            },
+            "default_value": "default",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_custom": 0,
+            "search_placeholder": "",
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         },
         {
             "key": "field_641de0a3c71fe",
@@ -118,10 +145,9 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
-                "class": "hidden",
+                "class": "",
                 "id": ""
             },
-            "acfe_save_meta": 0,
             "clone": [
                 "group_62af6b15dc7c2"
             ],
@@ -181,7 +207,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1695947847,
+    "modified": 1757219935,
     "acfe_categories": {
         "layout": "Layout"
     }
