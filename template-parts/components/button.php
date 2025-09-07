@@ -10,12 +10,15 @@ $button_title = $button_link['title'] ?? '';
 $button_url = $button_link['url'] ?? '';
 $button_target = $button_link['target'] ?? '_self';
 
-$button_settings = $button_comp['settings']['more_settings'] ?? [];
-$button_style = $button_settings['button_style'] ?? '';
-$button_size = $button_settings['button_size'] ?? '';
-$button_bg_color = $button_settings['button_bg_color'] ?? '';
-$button_border_color = $button_settings['button_border_color'] ?? '';
-$button_text_color = $button_settings['button_text_color'] ?? '';
+//$button_settings = $button_comp['settings']['more_settings'] ?? [];
+$button_style = $button_comp['button_style'] ?? '';
+$button_size = $button_comp['button_size'] ?? '';
+$button_bg_color = $button_comp['button_bg_color'] ?? '';
+$button_border_color = $button_comp['button_border_color'] ?? '';
+$button_text_color = $button_comp['button_text_color'] ?? '';
+
+// preint_r($button_comp);
+// preint_r($button_style);
 
 // Setting default button classes and styles
 $print_button_class = '';
@@ -23,7 +26,7 @@ $print_button_style = '';
 
 // Mapping button style to corresponding classes
 $button_styles_map = [
-  "default" => 'bg-white border-white hover:brightness-90',
+  "default" => 'bg-white border-white hover:brightness-90 hover:bg-white hover:border-white',
   "dark-blue" => 'btn-primary text-white hover:brightness-125',
   "blue" => 'btn-secondary text-white hover:brightness-125',
   "teal" => 'bg-brand-teal border-brand-teal text-white hover:bg-brand-teal hover:brightness-110',
