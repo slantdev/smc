@@ -145,7 +145,7 @@ function pagination_load_stores()
               <?php if ($location) : ?>
                 <div class="flex gap-x-4">
                   <div class="flex-none"><?php echo smc_icon(array('icon' => 'line-marker', 'group' => 'utilities', 'size' => '24', 'class' => 'text-black')); ?></div>
-                  <div>Located on <span class="uppercase"><?php echo $location ?></span></div>
+                  <div>Location: <span class="uppercase"><?php echo $location ?></span></div>
                 </div>
               <?php endif; ?>
               <?php if ($phone) : ?>
@@ -194,7 +194,7 @@ function pagination_load_stores()
               <?php if ($location) : ?>
                 <div class="flex gap-x-4">
                   <div class="flex-none"><?php echo smc_icon(array('icon' => 'line-marker', 'group' => 'utilities', 'size' => '24', 'class' => 'text-black')); ?></div>
-                  <div>Located on <span class="uppercase"><?php echo $location ?></span></div>
+                  <div>Location: <span class="uppercase"><?php echo $location ?></span></div>
                 </div>
               <?php endif; ?>
               <?php if ($phone) : ?>
@@ -362,7 +362,7 @@ function filter_stores()
       if ($location) {
         $response .= '<div class="flex gap-x-4">
                         <div class="flex-none">' . smc_icon(array('icon' => 'line-marker', 'group' => 'utilities', 'size' => '24', 'class' => 'text-black')) . '</div>
-                        <div>Located on <span class="uppercase">' . $location . '</span></div>
+                        <div>Location: <span class="uppercase">' . $location . '</span></div>
                       </div>';
       }
       if ($phone) {
@@ -443,7 +443,7 @@ function filter_stores()
       if ($location) {
         $response .= '<div class="flex gap-x-4">
                         <div class="flex-none">' . smc_icon(array('icon' => 'line-marker', 'group' => 'utilities', 'size' => '24', 'class' => 'text-black')) . '</div>
-                        <div>Located on <span class="uppercase">' . $location . '</span></div>
+                        <div>Location: <span class="uppercase">' . $location . '</span></div>
                       </div>';
       }
       if ($phone) {
@@ -531,7 +531,7 @@ function search_stores()
       if ($location) {
         $response .= '<div class="flex gap-x-4">
                         <div class="flex-none">' . smc_icon(array('icon' => 'line-marker', 'group' => 'utilities', 'size' => '24', 'class' => 'text-black')) . '</div>
-                        <div>Located on <span class="uppercase">' . $location . '</span></div>
+                        <div>Location: <span class="uppercase">' . $location . '</span></div>
                       </div>';
       }
       if ($phone) {
@@ -607,7 +607,7 @@ function search_stores()
       if ($location) {
         $response .= '<div class="flex gap-x-4">
                         <div class="flex-none">' . smc_icon(array('icon' => 'line-marker', 'group' => 'utilities', 'size' => '24', 'class' => 'text-black')) . '</div>
-                        <div>Located on <span class="uppercase">' . $location . '</span></div>
+                        <div>Location: <span class="uppercase">' . $location . '</span></div>
                       </div>';
       }
       if ($phone) {
