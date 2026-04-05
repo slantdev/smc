@@ -34,11 +34,19 @@
       }
       
       $enable_page_header = function_exists('get_field') ? get_field('enable_page_header', $the_id) : false;
-      $main_classes = '';
-      
-      // If there is no page header, add padding to push content down below the fixed site header
+      ?>
+      <main>
+      <?php
+      // If there is no page header, insert a spacer block to push content down natively beneath the fixed site header.
+      // We paint this block with the main navigation background color to seamlessly hide any "white flash" gap
+      // when the fixed header height is animating back to full size.
       if (!$enable_page_header) {
-        $main_classes = 'pt-[64px] lg:pt-[114px] xl:pt-[142px] 2xl:pt-[158px]';
+        $nav_group = function_exists('get_field') ? get_field('main_navigation', 'option') : [];
+        $main_nav = $nav_group['main_navigation'] ?? [];
+        $main_nav_colors = $main_nav['colors'] ?? [];
+        $main_nav_bg_color = $main_nav_colors['background_color'] ?? '';
+        
+        $spacer_style = $main_nav_bg_color ? 'background-color: ' . $main_nav_bg_color . ';' : '';
+        echo '<div class="w-full h-[64px] lg:h-[114px] xl:h-[142px] 2xl:h-[158px]" style="' . esc_attr($spacer_style) . '"></div>';
       }
       ?>
-      <main class="<?php echo esc_attr($main_classes); ?>">
