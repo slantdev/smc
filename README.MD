@@ -1,97 +1,63 @@
-<p><img src="http://tailpress.io/images/tailpress100.svg" width="260" alt="SMC"></p>
+# SMC Custom Theme
 
-[![GitHub release](https://img.shields.io/github/release/jeffreyvr/tailpress?include_prereleases=&sort=semver)](https://github.com/jeffreyvr/tailpress/releases/) [![License](https://img.shields.io/badge/License-MIT-blue)](#license) [![issues - tailpress](https://img.shields.io/github/issues/jeffreyvr/tailpress)](https://github.com/jeffreyvr/tailpress/issues)
+This is a custom WordPress theme developed for SMC by Slant Agency. It is built upon the Tailpress boilerplate, integrating Tailwind CSS with WordPress and the block editor.
 
-# Introduction
+## Tech Stack
 
-SMC is a minimal boilerplate theme for WordPress using [Tailwind CSS](https://tailwindcss.com/).
+- **CSS Framework**: [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components**: [daisyUI](https://daisyui.com/)
+- **CSS Plugins**: Typography, Forms, and Aspect-Ratio by Tailwind.
+- **Build Tools**: [Laravel Mix](https://laravel-mix.com/) wrapping Webpack.
+- **WP Boilerplate**: [Tailpress](https://tailpress.io/)
 
-## Getting started
+## Development Setup
 
-### Using the installer
+To get started with development on this theme, you will need to install its Node dependencies and run the build tools.
 
-You can get started using the installer (using composer):
+1. Ensure you have Node.js and npm installed.
+2. Navigate to the theme directory:
+   ```bash
+   cd wp-content/themes/smc
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the development server (runs BrowserSync proxied via `smc.local:8000` and watches for asset changes):
+   ```bash
+   npm run watch
+   ```
 
-```bash
-composer global require jeffreyvanrossum/tailpress-installer
+## Architecture & Workflows
 
-tailpress new example-theme
-```
+### 1. Working on Assets
+Always edit CSS and JS code inside the `/resources` folder.
+- `resources/css/app.css` -> Outputs to `assets/css/app.css`
+- `resources/js/app.js` -> Outputs to `assets/js/app.js`
 
-_If you haven't already, make sure to place the `~/.composer/vendor/bin` directory in your `PATH` so the tailpress executable is found when you run the tailpress command in your terminal._
+**Important**: Do not directly edit files in the `/assets/` directory as they will be overwritten by the bundler.
 
-You can optionally set the theme name.
+### 2. Component Structure
+- **`/inc`**: Contains PHP logic (theme setup, enqueues, AJAX functions, helpers, and ACF configuration).
+- **`/template-parts`**: Component-based templates separated into `sections/`, `layouts/`, `components/`, etc.
 
-```bash
-tailpress new example-theme --name="Example Theme"
-```
+### 3. Advanced Custom Fields (ACF) & Page Builder
+This theme relies heavily on ACF Pro for page building and site options.
+- The theme features a **Custom Page Builder** driven by ACF Flexible Content (`get_row_layout()`).
+- New page sections are mapped through the main builder file located at `template-parts/page-builder.php`.
+- The corresponding view template files are stored within `template-parts/sections/`.
+- ACF field groups are synced using local JSON and revisioned inside the `acf-json/` folder.
 
-By default, SMC uses Laravel Mix for compiling. Rather use Esbuild?
+## Build Commands
 
-```bash
-tailpress new example-theme --compiler="esbuild"
-```
+A quick overview of the essential NPM scripts configured in `package.json`:
 
-You can also initialize a new Git repository (branch defaults to `main`):
+| Command               | Description |
+| --------------------- | ----------- |
+| `npm run dev`         | Creates a development build of assets. |
+| `npm run watch`       | Watches for changes and compiles assets on the fly. Includes hot reloading via BrowserSync. |
+| `npm run production`  | Creates a production-ready, minified build of assets. Run this before deploying to a live server. |
 
-```bash
-tailpress new example-theme --name="Example Theme" --git --branch="main"
-```
+## Credits
 
-Once your theme is ready, don't forget to cd into the directory.
-
-You will be asked if you would like to have WordPress installed as well. Keep in mind that you still need a local development environment for PHP and MySQL.
-
-### Regular method
-
-- Clone repo `git clone https://github.com/jeffreyvr/tailpress.git && cd tailpress`
-- Run `rm -rf .git` to remove git (or `rmdir .git` for Windows)
-- Run `npm install`
-- Run `npm run watch` to start developing
-
-### General
-
-You will find the editable CSS and Javascript files within the `/resources` folder.
-
-Before you use your theme in production, make sure you run `npm run production`.
-
-## NPM Scripts
-
-There are several NPM scripts available. You'll find the full list in the `package.json` file under "scripts". A script is executed through the terminal by running `npm run script-name`.
-
-| Script | Description |
-| --- | --- |
-| production | Creates a production (minified) build of app.js, app.css and editor-style.css. |
-| dev | Creates a development build of app.js, app.css and editor-style.css. |
-| watch | Runs several watch scripts concurrently. |
-
-## Block editor support
-
-SMC comes with support for the [block editor](https://wordpress.org/support/article/wordpress-editor/).
-
-A basic setup for `theme.json` is included. This also means that you need to at least use WordPress 5.8. If you wan't to support earlier WordPress versions, you can use an [older version](https://github.com/jeffreyvr/tailpress/tree/0.1.1) of SMC instead.
-
-CSS-classes for alignment (full, wide etc.) are generated automatically. You can opt-out on this by removing the plugin from the `tailwind.config.js` file.
-
-To make the editing experience within the block editor more in line with the front end styling, a `editor-style.css` is generated.
-
-### Define theme colors and font sizes
-
-Several colors and font sizes are defined from the beginning. You can modify them in `theme.json`.
-
-## Links
-
-- [SMC website](https://tailpress.io)
-- [Screencasts](https://www.youtube.com/playlist?list=PL6GBdOp044SHIOSCZejodwr1HcYsC43wG)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [Laravel Mix Documentation](https://laravel-mix.com)
-- [Esbuild Documentation](https://esbuild.github.io)
-
-## Contributors
-
-- [Jeffrey van Rossum](https://github.com/jeffreyvr)
-- [All contributors](https://github.com/jeffreyvr/tailpress/graphs/contributors)
-
-## License
-
-MIT. Please see the [License File](/LICENSE) for more information.
+- Developed by **Slant Agency**

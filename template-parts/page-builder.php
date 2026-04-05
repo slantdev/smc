@@ -35,6 +35,9 @@ if (have_rows('section', $the_id)) :
     elseif (get_row_layout() == 'contact') :
       get_template_part('template-parts/sections/contact');
 
+    elseif (get_row_layout() == 'banner_image') :
+      get_template_part('template-parts/sections/banner_image');
+
     endif;
 
   // End loop.

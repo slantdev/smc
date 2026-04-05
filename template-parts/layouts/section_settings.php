@@ -3,10 +3,21 @@
  * Section Settings Variables
  */
 $section_settings = get_sub_field('section_settings');
-$section_background_color = $section_settings['section_background_color'];
 $section_style = '';
-if ($section_background_color) {
-  $section_style .= ' background-color:' . $section_background_color . ';';
+
+$horizontal_split_bg = $section_settings['section_horizontal_split_bg'] ?? [];
+$add_horizontal_split_bg = $horizontal_split_bg['add_horizontal_split_bg'] ?? false;
+
+if ($add_horizontal_split_bg) {
+  $bg_colors = $horizontal_split_bg['background_colors'] ?? [];
+  $bg_color_1 = !empty($bg_colors['bg_color_1']) ? $bg_colors['bg_color_1'] : 'transparent';
+  $bg_color_2 = !empty($bg_colors['bg_color_2']) ? $bg_colors['bg_color_2'] : 'transparent';
+  $section_style .= ' background: linear-gradient(180deg, ' . $bg_color_1 . ' 80%, ' . $bg_color_2 . ' 80%);';
+} else {
+  $section_background_color = $section_settings['section_background_color'] ?? '';
+  if ($section_background_color) {
+    $section_style .= ' background-color:' . $section_background_color . ';';
+  }
 }
 $section_text_color = $section_settings['section_text_color'];
 if ($section_text_color && $section_text_color !== 'default') {
